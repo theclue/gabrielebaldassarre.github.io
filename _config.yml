@@ -23,8 +23,8 @@ description              : "Il blog italiano sulla Social Network Analysis: teor
 url                      : "https://theclue.github.io"
 baseurl                  : "/gabrielebaldassarre.com"
 repository               : "theclue/gabrielebaldassarre.com"
-teaser                   : # /assets/images/default-post-teaser.png
- breadcrumbs            : true
+teaser                   : "/assets/images/default-post-teaser.png"
+breadcrumbs              : true
 words_per_minute         : 200
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
