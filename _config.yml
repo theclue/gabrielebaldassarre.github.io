@@ -12,14 +12,14 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "it-IT"
-title                    : "Social Network Analysis"
-title_separator          : "|"
+locale                   : "it"
+title                    : "Gabriele Baldassarre | Social Network Analysis"
+title_separator          : "-"
 name                     : "Gabriele Baldassarre"
-description              : "Una rete. Mille reti."
+description              : "Il blog italiano sulla Social Network Analysis: teoria, tecniche e applicazioni pratiche."
 url                      : "https://theclue.github.io"
 baseurl                  : "/gabrielebaldassarre.com"
 repository               : "theclue/gabrielebaldassarre.com"
