@@ -19,7 +19,7 @@ locale                   : "it-IT"
 title                    : "Social Network Analysis"
 title_separator          : "|"
 name                     : "Gabriele Baldassarre"
-description              : "Vagando nella rete tra le reti"
+description              : "Una rete. Mille reti."
 url                      : "https://theclue.github.io"
 baseurl                  : "/gabrielebaldassarre.com"
 repository               : "theclue/gabrielebaldassarre.com"
@@ -58,8 +58,8 @@ reCaptcha:
   secret                 :
 atom_feed:
   path                   : # blank (default) uses feed.xml
-search                   : # true, false (default)
-search_full_content      : # true, false (default)
+search                   : true
+search_full_content      : true
 search_provider          : # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
@@ -77,12 +77,12 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : "cerealping"
 facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : "/assets/images/gabriele-baldassarre.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -101,7 +101,7 @@ analytics:
 # Site Author
 author:
   name             : "Gabriele Baldassarre"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/gabriele-baldassarre.png"
   bio              : "I am an amazing person."
   location         : "Milano, Italia"
   email            :
@@ -113,19 +113,19 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           :
+  github           : "theclue"
   gitlab           :
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         : # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
+  linkedin         :  "gabrielebaldassarre"
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
+  stackoverflow    :  "696436/gabriele-b"
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
-  twitter          :
+  twitter          : "cerealping"
   vine             :
   weibo            :
   xing             :
@@ -266,6 +266,12 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
       share: true
       related: true
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
