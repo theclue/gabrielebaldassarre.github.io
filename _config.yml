@@ -23,7 +23,7 @@ description              : "Il blog italiano sulla Social Network Analysis: teor
 url                      : "https://theclue.github.io"
 baseurl                  : "/gabrielebaldassarre.com"
 repository               : "theclue/gabrielebaldassarre.com"
-teaser                   : /assets/images/default-post-teaser.png
+teaser                   : # /assets/images/default-post-teaser.png
  breadcrumbs            : true
 words_per_minute         : 200
 comments:
@@ -202,7 +202,7 @@ sass:
 permalink: /:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: Europe/Rome
+timezone: # Europe/Rome
 
 
 # Plugins (previously gems:)
