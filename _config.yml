@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale                   : "it"
-title                    : "Gabriele Baldassarre | Social Network Analysis"
+title                    : "Social Network Analysis"
 title_separator          : "-"
 name                     : "Gabriele Baldassarre"
 description              : "Il blog italiano sulla Social Network Analysis: teoria, tecniche e applicazioni pratiche."
@@ -105,7 +105,7 @@ analytics:
 author:
   name             : "Gabriele Baldassarre"
   avatar           : "/assets/images/gabriele-baldassarre.png"
-  bio              : "Head of Analytics per MRM//McCann, co-founder di 9th Circle Games, data scientist. Nerd."
+  bio              : "Head of Analytics in MRM//McCann, co-founder di 9thCircle Games, data scientist. Nerd."
   location         : "Milano, Italia"
   email            :
   uri              :
