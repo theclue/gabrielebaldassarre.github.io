@@ -11,13 +11,13 @@ header:
 
 Ok, direi che come introduzione parlando in terza persona può bastare.
 
-Spendo la mia giornata lavorativa in agenzia cercando di lavorare sui dati e cercando di proporre ai miei clienti qualcosa che valga la pena definire "data science". I colleghi mi definiscono un esteta (e un rompiscatole), ma il mio è semplicemente amore per la ricerca scientifica.
+Spendo la mia giornata lavorativa in agenzia cercando di lavorare sui dati e cercando di proporre ai miei clienti qualcosa che valga la pena definire "data science". I colleghi mi definiscono un esteta (e un rompiscatole), ma io lo chiamo semplice amore per la scienza.
 
 Sono bravo. Ma non abbastanza.
 
-Per questo non ho mai smesso di studiare. Di notte, soprattutto, quando gli altri dormono. Mi cimento in un problema che mi incuriosice, studio e faccio esperimenti. E alla fine, dopo averlo risolto, perdo interesse e passo al prossimo. Questo non piace molto a mia moglie, ingegnere come me. Anzi, più di me.
+Per questo non ho mai smesso di studiare. Di notte, soprattutto, quando gli altri dormono. Mi cimento in un problema che mi incuriosisce, studio e faccio esperimenti. E alla fine, dopo averlo risolto, perdo interesse e passo al prossimo. Questo non piace molto a mia moglie, che è ancora più ingegnere di me.
 
-Questo blog, prima, era più generalista, era in lingua inglese ed era pieno di contenuti, inbound links, contenuti e visitatori. Ma era dannatamente noioso. Così, che alla fine ho deciso di rifondarlo su qualcosa che mi interessasse di più, anche se questo ha rappresentato il mio suicidio SEO.
+Questo blog, prima, era più generalista, era in lingua inglese ed era pieno di contenuti, inbound links e visitatori. Ma era dannatamente noioso. Così, alla fine ho deciso di rifondarlo su qualcosa che mi interessasse di più, anche se questo ha rappresentato il mio suicidio SEO.
 
 La Social Network Analysis, appunto, è il mio campo di ricerca preferito. L'ho scoperta grazie a [Lada Adamic](http://www.ladamic.com) nel 2012 e da allora non l'ho più lasciata. La SNA, intendo, non Lada Adamic.
 
@@ -25,4 +25,4 @@ Quando non lavoro su numeri e grafi, e non gioco con mio figlio, mi diletto di [
 
 Mi batto per l'uso del punto e virgola nelle email. Non è facile, ma non è una causa disperata come l'uso del congiuntivo.
 
-Tutto sommato, si sta facendo un buon lavoro.
+Tutto sommato, penso di star facendo un buon lavoro.
