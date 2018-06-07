@@ -16,8 +16,8 @@ minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale                   : "it"
-title                    : "Social Network Analysis"
-title_separator          : "-"
+title                    : "Gabriele Baldassarre | Social Network Analysis"
+title_separator          : "|"
 name                     : "Gabriele Baldassarre"
 description              : "Il blog italiano sulla Social Network Analysis: teoria, tecniche e applicazioni pratiche."
 url                      : "https://theclue.github.io"
