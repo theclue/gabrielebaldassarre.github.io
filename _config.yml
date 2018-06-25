@@ -24,7 +24,7 @@ url                      : "https://theclue.github.io"
 baseurl                  : "/gabrielebaldassarre.com"
 repository               : "theclue/gabrielebaldassarre.com"
 teaser                   : "/assets/images/default-post-teaser.png"
-breadcrumbs              : true
+breadcrumbs              : false
 words_per_minute         : 200
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
@@ -95,10 +95,9 @@ social:
 
 # Analytics
 analytics:
-  provider               : false # false (default), "google", "google-universal", "custom"
+  provider: "google-gtag"
   google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
+    tracking_id: "GTM-WH4NHF"
 
 
 # Site Author
@@ -216,7 +215,7 @@ plugins:
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
-  - jekyll-sitemap
+#  - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jemoji
@@ -270,7 +269,10 @@ defaults:
       author_profile: true
       read_time: true
       share: true
-      related: true
+      related: false
+      toc: true
+      toc_label: "Indice"
+      toc_sticky: true
   # _pages
   - scope:
       path: "_pages"
@@ -278,3 +280,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+  - scope:
+      path: '/assets/*.js'
+    values:
+      sitemap: true
