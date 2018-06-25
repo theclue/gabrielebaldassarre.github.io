@@ -21,7 +21,7 @@ title_separator          : "|"
 name                     : "Gabriele Baldassarre"
 description              : "Il blog italiano sulla Social Network Analysis: teoria, tecniche e applicazioni pratiche."
 url                      : "https://theclue.github.io"
-baseurl                  : "/gabrielebaldassarre.com"
+baseurl                  : "/"
 repository               : "theclue/gabrielebaldassarre.com"
 teaser                   : "/assets/images/default-post-teaser.png"
 breadcrumbs              : false
