@@ -6,6 +6,7 @@ header:
   overlay_filter: 0.5
 graph_bare: "graphs/smallworld-example-bare.html"
 graph_degree: "graphs/smallworld-example-degree.html"
+graph_betweeness: "graphs/smallworld-example-betweeness.html"
 ---
 
 Tutti coloro che si approcciano alla Social Network Analysis si aspettano che questa disciplina li aiuti a capire quali sono gli individui più _prominenti_ in una data rete sociale. Una richiesta più che ovvia, dato che la SNA per definizione studia le relazioni tra gli attori proprio con questa finalità. Gli strumenti a disposizione per rispondere a domande di questo tipo sono moltissimi: alcuni sono semplici, altri estremamente sofisticati; tutti molto utili, in effetti. Ma prima di addentrarci nello specifico bisogna porsi una domanda fondamentale: cosa intendiamo per _prominenza_ in una rete sociale?
@@ -39,20 +40,37 @@ Vediamolo visualmente nella nostra rete giocattolo, dove la dimensione dei nodi 
 
 {% include {{ page.graph_degree }} %}
 
-dove blah blah blah
-
-Per chi si trova a suo agio con la matematica:
-
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-
-Ora, la misura è semplice e l'interpretazione immediata, ma talvolta contare semplicemente i collegamenti non fa, di per sé, un nodo importante. In particolare, questa misura non dice nulla circa il _tipo_ dei collegamenti, ma rimedieremo subito.
+Ora, la misura è semplice e l'interpretazione immediata, ma talvolta contare semplicemente i collegamenti non fa, di per sé, un nodo importante. In particolare, questa misura non dice nulla circa il _tipo_ dei collegamenti, una cosa che non va trascurata. Rimedieremo subito.
 
 ## Essere fondamentale: Betweeness Centrality
 
-Talvolta un nodo può risultare importante anche quando non ha un elevato numero di nodi da e verso di esso. Vediamo per esempio la rete qui sotto:
+Talvolta un nodo può risultare importante anche quando non ha un elevato numero di nodi da e verso di esso. Vediamo per esempio la rete qui sotto, in cui i numeri nei nodi rappresentano la degree centrality:
 
-{% include figure image_path="/assets/images/toy.butterfly.png" alt="Butterfly Network" caption="Nella rete cosiddetta a farfalla non è detto che i nodi con elevata degree centrality siano quelli più importanti della rete." %}
+{% include figure image_path="/assets/images/toy.butterfly.png" alt="Butterfly Network - Degree Centrality" caption="A valori alti di degree centrality (i numeri all'interno dei nodi) non necessariamente corrispondono i nodi più importanti di una rete." %}
 
-A buon senso, direi che è abbastanza evidente che il nodo _0_ ha un ruolo essenziale per la tenuta della rete. E questo pur avendo un numero di connessioni più basso dei nodi _3_ e _4_.
+A buon senso, è abbastanza evidente che il nodo rosso è essenziale per la tenuta della rete anche se la sua degree centrality è più bassa rispetto ai nodi verdi.
+Il fatto è che le interazione tra gli individui in una rete non dipendono esclusivamente dai loro vicini più prossimi. Interazioni tra due nodi non adiacenti possono essere influenzate da altri attori della rete, soprattutto se questi giacciono nei possibili percorsi tra i due e possono quindi "metterci il becco". Questi attori hanno, potenzialmente la possibilità di esercitare un controllo sulla comunicazione proprio in virtù del fatto che, affinché la comunicazione sia possibile, è necessario il loro intervento. In altre parole sono __fondamentali__ per la comunicazione tra i summenzionati due nodi della rete.
 
-Ebbene, la __Betweeness Centrality__ misura esattamente questo: 
+Come sappiamo, in una rete i percorsi possibili tra gli individui che la compongono sono infiniti. E sappiamo anche la legge del telefono senza fili: quanto più un percorso è lungo, tanto più l'informazione che giungerà a destinazione sarà distorta (e non è detto che arrivi). Bisogna tenerne conto.
+
+Ebbene, la __Betweeness Centrality__ di un nodo fa esattamente questo: dato un nodo \\( A \\) e prese tutte le coppie possibili di nodi della rete, escluso il nodo \\( A \\) stesso, la betweeness centrality di \\( A \\) è il numero di tutti i percorsi minimi che vi passano attraverso.
+
+{% include figure image_path="/assets/images/toy.butterfly.betweeness.png" alt="Butterfly Network - Betweeness Centrality" caption="Il nodo rosso è un passaggio obbligato per tutti i percorsi che vogliano transitare da un lato all'altro della rete, mentre nessun percorso minimo ha bisogno dei nodi azzurri per collegare gli altri nodi. Tanto più spesso un nodo si trova a giacere su un percorso minimo che collega coppie qualsiasi di altri nodi della rete, tanto più la sua betweeness centrality sarà alta. " %}
+
+Certo, il nodo rosso si trova in una situazione di forte _stress_ comunicativo, dovendo garantire l'apertura di più canali rispetto agli altri attori (in questi casi si dice che il nodo ha forti _costrizioni sociali_, lo vedremo in uno dei prossimi articoli), ma il rovescio della medaglia è la situazione di relativa preminenza: come anticipavamo, esso è, in una parola, un _connettore fondamentale_.
+
+Come per il caso precedente, in caso di grafi direzionati avremo a disposizione due misure: la __directed betweeness centrality__, che tiene conto del verso dei collegamenti per il calcolo dei percorsi minimi, e la __undirected betweeness centrality__ che, invece, li ignora.
+
+Esprimendo con la dimensione dei nodi la betweeness centrality alla nostra rete giocattolo, questo è il risultato:
+
+{% include {{ page.graph_betweeness }} %}
+
+Si nota subito come, in particolare, il nodo _14_, rispetto al calcolo precedente, ora abbia una prominenza maggiore in termini di betweeness; questo grazie alla sua funzione di connessione per la sottorete verde. Questo mentre gli altri nodi rossi, che pure avevano una degree piuttosto prominente, siano praticamente spariti; il loro ruolo di mediatori è vanificato dalla connessione diretta tra il nodo 14 e il nodo 20, più breve, e la loro betweeness ne è risultata compromessa.
+
+Come per la degree centrality, anche nel caso della betweeness centrality è possibile _normalizzare_ la misura in modo che, per reti molto estese, non assuma valori troppo estremi. Lo vedremo in uno dei prossimi articoli.
+
+## Essere efficienti: Closeness Centrality__
+
+Supponiamo il caso in cui siamo interessati a individuare i nodi in una rete che hanno più probabilità di reagire prontamente a un dato evento che sconvolge la rete stessa. Più che alla quantità di connessioni o alla capacità di essere fondamentali, in situazioni come queste ci interessa, probabilmente, più qualcosa legato alla _distanza_: vogliamo che il nostro telefono senza fili non abbia tanti intermediari.
+
+L'idea di base è questa: tanto più mediamente __vicini__ tali attori sono a tutti gli altri, tanto più _reattivi_ essi saranno perché minore sarà il numero di attori di cui hanno bisogno per trasferire un'informazione a un punto della rete o per rispondere a un evento. In senso più generale, essi sono i nodi più __efficienti__ del flusso di comunicazione della rete.
