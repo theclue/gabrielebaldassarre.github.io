@@ -1,6 +1,6 @@
 ---
 title: "L'importanza degli individui in una rete"
-excerpt: "Uno degli usi più comuni della Social Network Analysis è l'individuazione degli attori più importanti, a vario titolo, all'interno di una rete. In questo articolo introdurremo le modalità di misurazione più semplici, che si applicano alle reti non direzionate, per poi fornire alcuni esempi di applicazioni pratiche."
+excerpt: "Uno degli usi più comuni della Social Network Analysis è l'individuazione degli attori più importanti, a vario titolo, all'interno di una rete. A questo scopo, in questo articolo introdurremo le tre modalità più semplici di misura della __centralità__"
 header:
   overlay_image: /assets/images/centrality-overlay.png
   overlay_filter: 0.5
