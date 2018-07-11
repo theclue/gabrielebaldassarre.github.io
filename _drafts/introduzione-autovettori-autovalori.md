@@ -48,7 +48,47 @@ che, una volta risolto, ci consente di individuare gli autovalori \\( \lambda_{1
 
 Come dicevamo, gli autovettori ricoprono un ruolo essenziale in tanti campi del sapere, dalle scienze delle costruzioni alla meccanica quantistica, dall'elettromagnetismo alla teoria dell'informazione, fino allo studio delle reti.
 
-Alla base di tanta importanza è soprattutto la proprietà degli autovettori di poter trasformare una matrice  \\( A \\) nella sua corrispettiva __diagonalizzata__, a seguito di un cambio di sistema di riferimento a favore di uno i cui assi siano gli autovettori della matrice stessa. Per un dato sistema, quindi, e posto che gli autovettori esistano e siano reali e non nulli, tale proprietà consente di semplificare enormemente i calcoli, poiché le operazioni, eventuali, da condurre sul sistema trasformato da \\( A_{diag} \\) saranno tutte algebriche, relativamente rapide da computare. Vediamolo in pratica.
+Alla base di tanta importanza è soprattutto la proprietà degli autovettori di poter trasformare una matrice  \\( A \\) nella sua corrispettiva __diagonalizzata__, a seguito di un cambio di sistema di riferimento a favore di uno i cui assi siano gli autovettori della matrice stessa. Vediamolo in praticamente
+
+Innanzitutto verifichiamo una proprietà molto interessante delle matrici diagonali: quando un vettore \\( a \\) è _moltiplicato_ per una matrice diagonale \\( A \\), il vettore risultante \\( b \\) avrà componenti pari alla proiezione delle componenti del vettore originario sul sistema di assi __ortogonali__ di riferimento moltiplicato scalarmente per i coefficienti sulla diagonale A. Facciamo un esempio. Supponendo di voler calcolare \\( \vec{b} = A\vec{a} \\) dati:
+
+$$ \vec{a} = \begin{pmatrix} 1 \\\\ 3 \end{pmatrix}  A = \begin{bmatrix} 3 & 0 \\\\ 0 & -2 \end{bmatrix} $$
+
+Avremo:
+
+$$ \vec{b} = \begin{pmatrix} 1 \\\\ 3 \end{pmatrix} \begin{bmatrix} 3 & 0 \\\\ 0 & -2 \end{bmatrix} = \begin{pmatrix} 3 \\\\ -6 \end{pmatrix}  $$
+
+
+ovvero le componenti \\(b_x = 3 \\) e \\(b_y = -6 \\) sono le proiezioni sugli assi \\( (x, y) \\) del vettore \\( \vec{b} \\) con un modulo pari alle proiezioni del vettore di partenza \\( \vec{a} \\) moltiplicati, come abbiamo già detto, per i coefficienti sulla diagonale \\( A \\).
+
+{% include figure image_path="/assets/images/vectors.dotproduct.png" alt="Prodotto scalare - proiezioni" caption="Prodotto tra vettori e una matrice. Essendo questa diagonale, le due proiezioni saranno ortogonali tra loro." %}
+
+Questo ragionamento è sorprendentemente simile a quanto abbiamo già detto sugli autovettori, ovvero i vettori caratteristici di una trasformazione che individuano delle direzioni sulle quali giacciono i vettori trasformati modificati al più in modulo e verso da un fattore \\( \lambda \\)
+
+In altri termini, è possibile rappresentare il vettore \\( \vec{a} \\) non più con il sistema di assi \\( (x, y) \\) ma su un nuovo sistema di assi \\( (v_1, v_2) \\) costruito sulle direzioni degli autovettori della matrice \\( A \\). Questo vettore trasformato \\( \vec{a}' \\) avrà, come sappiamo, componenti di lunghezza pari a quelle del vettore di partenza \\( \vec{a} \\) moltiplicato per i vari autovalori \\( \lambda_N \\). In generale queste proiezioni saranno __non ortogonali__, laddove non lo sia stata la matrice di trasformazione di partenza.
+
+Questo ci consente di affermare due cose.
+Innanzitutto ci consente di dire che possiamo utilizzare gli autovettori come assi di riferimento per applicare una trasformazione \\( A \\) a un vettore \\( \vec{a} \\), utilizzando gli autovalori \\( \lambda_N \\) come moltiplicatori delle componenti di \\( \vec{a} \\) sulle direzioni degli autovettori.
+
+Ma quel che è più importante, ci consente di calcolare le coordinate del vettore \\( \vec{a} \\) nel nuovo sistema di riferimento individuato dagli autovettori \\( (v_1, v_2) \\). Vediamo come.
+
+Ricordando che il vettore \\( \vec{a} \\) è scomponibile nelle due componenti nelle direzioni degli autovettori, supponendo \\( \vec{v_1} \\) e \\( \vec{v_2} \\) autovettori __normalizzati__ (cioè con modulo pari a uno), possiamo scrivere questa combinazione lineare:
+
+$$ a = \alpha v_1 + \beta v_2 $$
+
+che individua un sistema di equazioni lineari che può essere risolto in \\( (\alpha, \beta) \\) così:
+
+$$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \alpha\begin{pmatrix} v_1x \\\\ v_1y \end{pmatrix} + \beta\begin{pmatrix} v_2x \\\\ v_2y \end{pmatrix} \Rightarrow $$
+
+$$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \begin{pmatrix} \alpha v_1x + \beta v_2x \\\\ \alpha v_1y + \beta v_2y \end{pmatrix} = \bbox[5px,border:1px solid red]{\begin{pmatrix} v_1x && v_2x \\\\ v_1y && v_2y \end{pmatrix}}\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix}  $$
+
+Dove la matrice nel riquadro rosso non è altro che la __matrice che ha come colonne le componenti normalizzate degli autovettori della matrice di partenza__ mentre \\( (\alpha, \beta)^T \\) è niente altro che __la rappresentazione del vettore di partenza \\(\vec{a} \\) nel nuovo sistema di riferimento dato dagli autovettori__.
+
+Se indichiamo la matrice degli autovettori con \\( V \\) possiamo in definitiva scrivere:
+
+$$ \vec{a} = V\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \text{ovvero}  \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} = V^{-1}A $$
+
+Il nuovo sistema di assi così individuato non è necessariamente rappresentato da autovettori ortogonali. Tuttavia, questi possono essere _ortogonalizzati_ facendoli ruotare relativamente uno agli altri in modo da ottenere variazioni di angoli di, giustappunto, 90°. 
 
 ## La compressione dell'informazione
 
