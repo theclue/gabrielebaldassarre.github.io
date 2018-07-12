@@ -88,10 +88,85 @@ Se indichiamo la matrice degli autovettori con \\( V \\) possiamo in definitiva 
 
 $$ \vec{a} = V\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \text{ovvero}  \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} = V^{-1}A $$
 
-Il nuovo sistema di assi così individuato non è necessariamente rappresentato da autovettori ortogonali. Tuttavia, questi possono essere _ortogonalizzati_ facendoli ruotare relativamente uno agli altri in modo da ottenere variazioni di angoli di, giustappunto, 90°. 
+Il nuovo sistema di assi così individuato non sarà necessariamente rappresentato da autovettori ortogonali. Tuttavia, questi potranno essere _ortogonalizzati_ facendoli ruotare relativamente uno agli altri in modo da ottenere variazioni di angoli di, giustappunto, 90°.
 
-## La compressione dell'informazione
+L'applicazione più concreta del cambio di assi verso un sistema individuato dagli autovettori è proprio nella diagonalizzazione delle matrici che, come detto, ha diversi vantaggi tra cui la semplificazione dei calcoli. Ebbene, possiamo dimostrare che __per diagonalizzare una matrice si possono usare gli autovalori per produrre una base di riferimento ortogonale__. Se gli autovettori sono ortogonali, il vettore trasformato manterrà, nel nuovo sistema di riferimento, la stessa lunghezza - e questa è certamente la situazione più auspicabile. In caso contrario, il vettore trasformato presenterà una lunghezza diversa.
 
-Ma non è la diagonalizzazione la caratteristica degli autovettori e degli autovalori più interessante, per il nostro campo di interesse. O almeno, non direttamente.
+Ma vediamo come. Ricordando l'equazione fondamentale degli autovettori per cui in uno spazio a \\( N \\) dimensioni abbiamo al più \\( N \\) autovettori e autovalori e la cui espressione del k-esimo è la seguente:
 
-La __matrice degli autovettori__, formata - come intuibile da tutti gli autovettori di \\( A \\) esprime anche la __varianza__ di \\(A \\), ovvero _le informazioni che contiene_. Questa si rispecchia negli autovalori: ognuno di essi, infatti, esprimerà una certa percentuale di varianza della matrice \\( A \\):
+$$ A\vec{v_k} = \lambda_k\vec{v_k} \text{  con   } k = 1,\ldots,N $$
+
+Ovvero
+
+$$ \begin{matrix} A\vec{v_1} = \lambda_1\vec{v_1} \\\\ A\vec{v_2} = \lambda_2\vec{v_2} \\\\ \vdots \\\\ A\vec{v_k} = \lambda_k\vec{v_k} \end{matrix} \Rightarrow $$
+
+$$ A(v_1 v_2 \ldots v_N) = (v_1 v_2 \ldots v_N)\Lambda $$
+
+con i vettori \\( v_k \\) gli autovettori e \\( \Lambda \\) la __matrice degli autovalori__ che, infatti, vale:
+
+$$ \Lambda = \begin{pmatrix} \lambda_1 & 0 & \ldots & 0 \\\\ 0 & \lambda_2 & \ldots & 0 \\\\ \vdots & \vdots & \ddots & \vdots \\\\ 0 & 0 & \ldots & \lambda_k \end{pmatrix} $$
+
+che, come si può vedere, è una matrice che presenta sulla diagonale principale i coefficienti degli autovalori della matrice \\( A \\).
+
+Per finire, andando a indicare con \\( V \\) la matrice degli autovettori utilizzati precedentemente, otterremo l'equazione fondamentale per la diagonalizzazione di una matrice:
+
+$$ \bbox[5px,border:1px solid red]{ VA = V\Lambda } $$
+
+In altri termini, __la matrice degli autovalori \\( \Lambda \\) sarà la rappresentazione diagonale della matrice \\( A \\) in un sistema di riferimento individuato dagli autovettori di \\( A \\)__, o come si dice più propriamente _nell'autospazio di \\( A \\)_.
+
+Ma a cosa serve tutto ciò?
+
+## Una applicazione pratica: la compressione dell'informazione
+Sia data una certa matrice quadrata \\( A \\). La __matrice degli autovettori__ esprime la __varianza__ di \\(A \\), ovvero _le informazioni che contiene_. Il quantitativo di varianza espressa da ogni singolo autovettore è espresso dal valore dell'autovettore corrispondente. Vediamolo con un esempio con la seguente matrice \\( A \\):
+
+$$ A = \begin{pmatrix} 2 & -1 & 3 \\\\ 3 & -2 & 2  \\\\ 15 & -9 & 16 \end{pmatrix}  $$
+
+(si noti che la matrice A è di ordine 3 con il terzo componente volutamente molto _vicino_ ma non coincidente alla combinazione lineare \\( 3a_1 + 3a_2\\)).
+
+Ora calcoliamo gli autovalori e gli autovettori corrispondenti:
+
+$$ \begin{matrix} \lambda_1 = 17.5 \\\\ \lambda_2 = -1.6 \\\\ \lambda_3 = 0.03 \end{matrix} $$
+
+$$ V = \begin{pmatrix} -0.18 & 0.26 & -0.64 \\\\ -0.12 & -0.68 & -0.19 \\\\ -0.97 & -0.68 & 0.74 \end{pmatrix} $$
+
+$$ V^-1 = \begin{pmatrix} -0.81 & 0.47 & -0.93 \\\\ 1.04 & -0.86 & -0.08 \\\\ -0.80 & -0.60 & 0.22 \end{pmatrix} $$
+
+Notiamo subito che \\( \lambda_3 \\) è molto più piccolo in modulo degli altri due autovalori. Questo significa che il suo contributo all'informazione contenuta in \\( A \\) è molto ridotto, rispetto agli altri due.
+
+Decidiamo allora di _scartarlo_ e di scartare anche l'autovettore corrispondente.
+
+$$ \Lambda = \begin{pmatrix} 17.5 & 0 \\\\ 0 & -1.6 \end{pmatrix} $$
+
+$$ V = \begin{pmatrix} -0.18 & 0.26 4 \\\\ -0.12 & -0.68  \\\\ -0.97 & -0.68  \end{pmatrix} $$
+
+$$ V^-1 = \begin{pmatrix} -0.81 & 0.47 & -0.93 \\\\ 1.04 & -0.86 & -0.08  \end{pmatrix} $$
+
+
+Ora, dalla formula della diagonalizzazione abbiamo che
+
+$$ A = V\Lambda V^{-1} $$
+
+e facendo i calcoli abbiamo questa rappresentazione di \\( A \\) che per distinguerla dall'originaria decoro con un pedice \\( R \\):
+
+$$ A_R = \begin{pmatrix} 1.98 & -1.01 & 3 \\\\ 2.97 & -2.01 & 2  \\\\ 15 & -8.99 & 15.99 \end{pmatrix}  $$
+
+che non è _identica_ alla matrice \\( A \\), ma è senza dubbio _estremamente_ simile ad essa. Ma ottenuta lavorando con matrici di dimensione 2 invece di 3, ovvero con _meno calcoli_.
+
+Abbiamo, nel concreto, ricostruito la matrice \\( A \\) utilizzando una sua espressione diagonale valutata su una base di autovettori _ridotta_ rispetto a quella individuabile da \\( A \\) e nel farlo abbiamo perso un quantitativo _trascurabile_ di informazione.
+
+Geometricamente, abbiamo espresso \\( A_R \\) in un sistema di riferimento avente un numero di dimensioni più basso rispetto all'ordine di \\( A \\).
+
+Nella pratica, abbiamo condotto una operazione di __compressione dell'informazione__.
+
+## Autovettori e Social Network Analysis
+
+L'importanza degli autovettori per la scienza dell'informazione, come potete immaginare, già solo per la capacità di ridurre di dimensioni un sistema è estrema.
+Ma come possiamo applicare questo potente strumento allo studio delle reti sociali?
+
+Per rispondere a questa domanda basta ricordare che noi possiamo __sempre__ esprimere una rete di relazioni attraverso la _matrice delle adiacenze_. E questa matrice è, tipicamente, _non singolare_ quindi ammette un'inversa e, quindi, _su di essa è possibile calcolare gli autovalori e gli autovettori_.
+
+Lo vedremo presto su una particolare misura di centralità, chiamata __Eigenvector Centrality__, sulla quale si è molto parlato negli ultimi anni e ancora di più se ne parlerà in futuro.
+
+E' la modalità, infatti, su cui Google ha costruito il suo famigerato algoritmo _PageRank_, per stimare l'autorevolezza e ordinare i link nei risultati del motore di ricerca.
+
+Esatto, Google. E parte tutto da qui.
