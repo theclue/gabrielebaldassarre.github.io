@@ -35,11 +35,11 @@ Così come il DNA è costruito da una sequenza di quattro basi elementari (adeni
 
 Il motivo per cui l'elemento più atomico di organizzazione delle comunità sociali sia il triangolo è ancora oggetto di studi e non vi ci addentreremo in questa sete. Fatto sta, che, come una catena di DNA è descritta da una lunga sequenza di basi, una rete sociale può essere descritta da una lunga _sequenza di triangoli_. Questi triangoli prendono il nome di _triadi_ o, più spesso, di __clique__ (in italiano orribilmente traducibile con 'cricca'). E queste _clique_ non sono, tipicamente, oggetti statici; le relazioni evolvono nel tempo e la struttura della rete con esso. Con essa, quindi, cambiano le clique.
 
-{% include figure image_path="/assets/images/forbidden-triad.png" alt="Forbidden Triad" caption="Una serie di clique. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. L'unica caratterizzata da una certa instabilità è quella di sinistra: la probabilità che collassi, presto o tardi, in una delle due configurazioni più a destra è molto alta." %}
+{% include figure image_path="/assets/images/triadi.svg" alt="Triadi in equilibrio e proibite" caption="Una serie di clique, o triadi. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. Tra questi esempi, l'unica caratterizzata da una certa instabilità è quella di sinistra che non a caso prende il nome di _triade proibita (forbidden triad)_: la probabilità che evolva, presto o tardi, in una delle due configurazioni più a destra è molto alta." %}
 
-Il motivo per cui avviene questa "risoluzione" della clique ha cause fisiche: minimizzazione dell'energia. Troppo dispendiosa di energie, infatti, è la situazione del nodo _A_, costretto a mantenere due canali segregati con _C_ e _B_ in una situazione di perenne stress sociale. Molto più facile risolverla o interrompendo la relazione con uno dei due vicini (_C_, in questo caso) oppure facendo sì che i due nodi isolati entrino in contatto.
+Il motivo per cui avviene questa "risoluzione" della clique ha cause fisiche: minimizzazione dell'energia. Troppo dispendiosa di energie, infatti, è la situazione del nodo _A_, costretto a mantenere due canali segregati con _C_ e _B_ in una situazione di perenne stress sociale. Molto più facile risolverla facendo sì che i due nodi non connessi tra di loro entrino in contatto oppure interrompendo la relazione con uno dei due vicini (_C_, in questo caso).
 
-La "forza" che eventualmente spinge verso la seconda delle ipotesi appena descritte è la  __transitività__ ed è una caratteristica osservabile in molte reti sociali e anche in alcune reti di informazioni (come gli scambi di email in un'azienda). Detto anche __clustering__, perché spinge la rete a organizzarsi in _grappoli_ strettamente connessi, è modellizabile con degli opportuni coefficienti che, in linea di principio, hanno lo scopo di misurare la _densità e la tipologia di clique_ in una rete.
+La "forza" che eventualmente spinge verso la prima delle due evoluzioni appena descritte è la  __transitività__ ed è una caratteristica osservabile in molte reti sociali e anche in alcune reti di informazioni (come gli scambi di email in un'azienda). Detto anche __clustering__, perché spinge la rete a organizzarsi in _grappoli_ strettamente connessi, è modellizabile con degli opportuni coefficienti che, in linea di principio, hanno lo scopo di misurare la _densità e la tipologia di clique_ in una rete.
 
 ### Follow the leader
 
@@ -62,7 +62,7 @@ Innanzitutto una precisazione: non è che solo nel XXI secolo i ricercatori si s
 
 Un primo modello di come si vengono a creare e alimentare le community in una rete è stato il cosiddetto _modello gerarchico_, che come il modello suggerisce pensa alle community come gerarchie di dimensioni crescenti, come gli organigrammi delle aziende. Ma ben presto si è scoperto che questo modello era troppo schematico per rappresentare correttamente la realtà.
 
-Ma è stato a partire dal 2003, con il lavoro di Mark Newman e Juyong Park, due fisici all'epoca entrambi all'University of Michingan, che 
+Ma è stato a partire dal 2003, con il lavoro di Mark Newman e Juyong Park, due fisici all'epoca entrambi all'University of Michingan, che
 
 - __Le reti sociali uman
 
