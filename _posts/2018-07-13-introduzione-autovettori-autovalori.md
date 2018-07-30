@@ -6,17 +6,17 @@ header:
   overlay_filter: 0.5
 ---
 
-Lo studio degli autovettori, e dei corrispondenti autovalori, è un qualcosa in cui ci siamo cimentati probabilmente tutti almeno una volta nella vita. In pochi, tuttavia, sanno che questo strumento è di importanza vitale anche per la Social Network Analysis per tutto ciò che concerne la [centralità]({% post_url 2018-07-02-importanza-individui-rete-centralita %}) e ancora meno sospettano che gli autovettori sono alla base di nientemeno che l'algoritmo di ricerca di Google.
+Lo studio degli autovettori e dei corrispondenti autovalori è un qualcosa in cui ci siamo cimentati probabilmente tutti almeno una volta nella vita. In pochi, tuttavia, sanno che questo strumento è di importanza vitale anche per la Social Network Analysis per tutto ciò che concerne la [centralità]({% post_url 2018-07-02-importanza-individui-rete-centralita %}) e ancora meno sospettano che gli autovettori sono alla base di nientemeno che l'algoritmo di ricerca di Google.
 
 Senza la pretesa di fornire una trattazione rigorosa sull'argomento come se dovessimo preparare un esame di algebra lineare, qui ci concentreremo sull'intuizione dei concetti fondamentali così da avere tutti le conoscenze necessarie per utilizzarli in ambito di analisi delle reti sociali.
 
 ## Autovettori e autovalori: una definizione informale
 
-Supponiamo di avere una matrice di trasformazione quadrata \\( A \\). Essa può essere vista come un _operatore_ perché può essere applicata (mediante prodotto scalare) ad un vettore \\( \vec{x} \\) al fine di ottenere un vettore \\( \vec{y} \\), ovvero:
+Supponiamo di avere una matrice di trasformazione quadrata \\( A \\). Essa può essere vista come un _operatore_ perché può essere applicata (mediante prodotto scalare) a un vettore \\( \vec{x} \\) al fine di ottenere un vettore \\( \vec{y} \\), ovvero:
 
 $$ A\vec{x} = \vec{y} $$
 
-Per chi non ha paura di una indigestione di algebra lineare possiamo aggiungere che la matrice \\( A \\) è un [endomorfismo](https://it.wikipedia.org/wiki/Endomorfismo).
+Per chi non ha paura di fare indigestione di algebra lineare possiamo aggiungere che la matrice \\( A \\) è un [endomorfismo](https://it.wikipedia.org/wiki/Endomorfismo).
 
 Ebbene, __gli autovettori sono quei vettori che giacciono su delle direzioni caratteristiche della trasformazione \\( A \\) tali per cui quando sono moltiplicati per \\(A \\) danno come risultato altrettanti vettori non nulli che si differenziano dai vettori di partenza al più per il modulo e per il verso, mentre le loro direzioni restano invariate.__
 
@@ -48,16 +48,17 @@ che, una volta risolto, ci consente di individuare gli autovalori \\( \lambda_{1
 
 Come dicevamo, gli autovettori ricoprono un ruolo essenziale in tanti campi del sapere, dalle scienze delle costruzioni alla meccanica quantistica, dall'elettromagnetismo alla teoria dell'informazione, fino allo studio delle reti.
 
-Alla base di tanta importanza è soprattutto la proprietà degli autovettori di poter trasformare una matrice  \\( A \\) nella sua corrispettiva __diagonalizzata__, a seguito di un cambio di sistema di riferimento a favore di uno i cui assi siano gli autovettori della matrice stessa. Vediamolo in praticamente
+Alla base di tanta importanza è soprattutto la proprietà degli autovettori di poter trasformare una matrice  \\( A \\) nella sua corrispettiva __diagonalizzata__, a seguito di un cambio di sistema di riferimento a favore di uno i cui assi siano gli autovettori della matrice stessa. Vediamo praticamente.
 
-Innanzitutto verifichiamo una proprietà molto interessante delle matrici diagonali: quando un vettore \\( a \\) è _moltiplicato_ per una matrice diagonale \\( A \\), il vettore risultante \\( b \\) avrà componenti pari alla proiezione delle componenti del vettore originario sul sistema di assi __ortogonali__ di riferimento moltiplicato scalarmente per i coefficienti sulla diagonale A. Facciamo un esempio. Supponendo di voler calcolare \\( \vec{b} = A\vec{a} \\) dati:
+Innanzitutto verifichiamo una proprietà molto interessante delle matrici diagonali: quando un vettore \\( a \\) è _moltiplicato_ per una matrice diagonale \\( A \\), il vettore risultante \\( b \\) avrà componenti pari alla proiezione delle componenti del vettore originario sul sistema di assi __ortogonali__ di riferimento moltiplicato scalarmente per i coefficienti sulla diagonale A. Facciamo un esempio.
+
+Supponendo di voler calcolare \\( \vec{b} = A\vec{a} \\) dati:
 
 $$ \vec{a} = \begin{pmatrix} 1 \\\\ 3 \end{pmatrix}  A = \begin{bmatrix} 3 & 0 \\\\ 0 & -2 \end{bmatrix} $$
 
 Avremo:
 
 $$ \vec{b} = \begin{pmatrix} 1 \\\\ 3 \end{pmatrix} \begin{bmatrix} 3 & 0 \\\\ 0 & -2 \end{bmatrix} = \begin{pmatrix} 3 \\\\ -6 \end{pmatrix}  $$
-
 
 ovvero le componenti \\(b_x = 3 \\) e \\(b_y = -6 \\) sono le proiezioni sugli assi \\( (x, y) \\) del vettore \\( \vec{b} \\) con un modulo pari alle proiezioni del vettore di partenza \\( \vec{a} \\) moltiplicati, come abbiamo già detto, per i coefficienti sulla diagonale \\( A \\).
 
@@ -68,6 +69,7 @@ Questo ragionamento è sorprendentemente simile a quanto abbiamo già detto sugl
 In altri termini, è possibile rappresentare il vettore \\( \vec{a} \\) non più con il sistema di assi \\( (x, y) \\) ma su un nuovo sistema di assi \\( (v_1, v_2) \\) costruito sulle direzioni degli autovettori della matrice \\( A \\). Questo vettore trasformato \\( \vec{a}' \\) avrà, come sappiamo, componenti di lunghezza pari a quelle del vettore di partenza \\( \vec{a} \\) moltiplicato per i vari autovalori \\( \lambda_N \\). In generale queste proiezioni saranno __non ortogonali__, laddove non lo sia stata la matrice di trasformazione di partenza.
 
 Questo ci consente di affermare due cose.
+
 Innanzitutto ci consente di dire che possiamo utilizzare gli autovettori come assi di riferimento per applicare una trasformazione \\( A \\) a un vettore \\( \vec{a} \\), utilizzando gli autovalori \\( \lambda_N \\) come moltiplicatori delle componenti di \\( \vec{a} \\) sulle direzioni degli autovettori.
 
 Ma quel che è più importante, ci consente di calcolare le coordinate del vettore \\( \vec{a} \\) nel nuovo sistema di riferimento individuato dagli autovettori \\( (v_1, v_2) \\). Vediamo come.
