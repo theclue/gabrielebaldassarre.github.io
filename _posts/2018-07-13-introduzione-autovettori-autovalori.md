@@ -62,7 +62,7 @@ $$ \vec{b} = \begin{pmatrix} 1 \\\\ 3 \end{pmatrix} \begin{bmatrix} 3 & 0 \\\\ 0
 
 ovvero le componenti \\(b_x = 3 \\) e \\(b_y = -6 \\) sono le proiezioni sugli assi \\( (x, y) \\) del vettore \\( \vec{b} \\) con un modulo pari alle proiezioni del vettore di partenza \\( \vec{a} \\) moltiplicati, come abbiamo già detto, per i coefficienti sulla diagonale \\( A \\).
 
-{% include figure image_path="/assets/images/vectors.dotproduct.png" alt="Prodotto scalare - proiezioni" caption="Prodotto tra vettori e una matrice. Essendo questa diagonale, le due proiezioni saranno ortogonali tra loro." %}
+{% include figure image_path="/assets/images/vectors.dotproduct.svg" alt="Prodotto scalare - proiezioni" caption="Prodotto tra vettori e una matrice. Essendo questa diagonale, le due proiezioni saranno ortogonali tra loro." %}
 
 Questo ragionamento è sorprendentemente simile a quanto abbiamo già detto sugli autovettori, ovvero i vettori caratteristici di una trasformazione che individuano delle direzioni sulle quali giacciono i vettori trasformati modificati al più in modulo e verso da un fattore \\( \lambda \\)
 
