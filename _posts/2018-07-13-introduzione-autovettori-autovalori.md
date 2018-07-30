@@ -80,13 +80,19 @@ che individua un sistema di equazioni lineari che può essere risolto in \\( (\a
 
 $$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \alpha\begin{pmatrix} v_1x \\\\ v_1y \end{pmatrix} + \beta\begin{pmatrix} v_2x \\\\ v_2y \end{pmatrix} \Rightarrow $$
 
-$$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \begin{pmatrix} \alpha v_1x + \beta v_2x \\\\ \alpha v_1y + \beta v_2y \end{pmatrix} = \bbox[5px,border:1px solid red]{\begin{pmatrix} v_1x && v_2x \\\\ v_1y && v_2y \end{pmatrix}}\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix}  $$
+$$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \begin{pmatrix} \alpha v_1x + \beta v_2x \\\\ \alpha v_1y + \beta v_2y \end{pmatrix} \Rightarrow $$
+
+$$ \begin{pmatrix} a_x \\\\ a_y \end{pmatrix} = \bbox[5px,border:1px solid red]{\begin{pmatrix} v_1x && v_2x \\\\ v_1y && v_2y \end{pmatrix}}\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix}  $$
 
 Dove la matrice nel riquadro rosso non è altro che la __matrice che ha come colonne le componenti normalizzate degli autovettori della matrice di partenza__ mentre \\( (\alpha, \beta)^T \\) è niente altro che __la rappresentazione del vettore di partenza \\(\vec{a} \\) nel nuovo sistema di riferimento dato dagli autovettori__.
 
 Se indichiamo la matrice degli autovettori con \\( V \\) possiamo in definitiva scrivere:
 
-$$ \vec{a} = V\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} \text{ovvero}  \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} = V^{-1}A $$
+$$ \vec{a} = V\begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} $$
+
+ovvero
+
+$$  \begin{pmatrix} \alpha \\\\ \beta \end{pmatrix} = V^{-1}A $$
 
 Il nuovo sistema di assi così individuato non sarà necessariamente rappresentato da autovettori ortogonali. Tuttavia, questi potranno essere _ortogonalizzati_ facendoli ruotare relativamente uno agli altri in modo da ottenere variazioni di angoli di, giustappunto, 90°.
 
