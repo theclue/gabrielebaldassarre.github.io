@@ -57,3 +57,28 @@ plot(moby_pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey
      xlab="Word Occurrance", ylab="CDF")
 lines(moby_pl, col=2)
 
+#################
+# UK POPULATION #
+#################
+data("population", package="poweRlaw")
+
+population_pl <- conpl$new(population)
+population.est <- estimate_xmin(population_pl)
+population_pl$setXmin(population.est)
+
+population_ln <- conlnorm$new(population)
+population.ln.est <- estimate_xmin(population_ln)
+population_ln$setXmin(population.ln.est)
+
+population_exp <- conexp$new(population)
+population.exp.est <- estimate_xmin(population_exp)
+population_exp$setXmin(population.exp.est)
+
+population.bs = bootstrap(population_pl, no_of_sims=100, threads=8)
+
+plot(population_pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
+     xlab="Population", ylab="CDF")
+lines(population_pl, col=2)
+lines(population_ln, col=3)
+lines(population_exp, col=4)
+
