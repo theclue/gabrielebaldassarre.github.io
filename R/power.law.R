@@ -14,48 +14,49 @@ tryCatch({
 #################
 italian.towns <- read.csv2("./data-sources/comuni_italiani.csv")
 
-italian_pl <- conpl$new(italian.towns$PopResidente)
-italian.est <- estimate_xmin(italian_pl)
-italian_pl$setXmin(italian.est)
+italian.pl <- conpl$new(italian.towns$PopResidente)
+italian.pl$setXmin(estimate_xmin(italian.pl))
+italian.pl$setPars(estimate_pars(italian.pl))
 
-italian_ln <- conlnorm$new(italian.towns$PopResidente)
-italian.ln.est <- estimate_xmin(italian_ln)
-italian_ln$setXmin(italian.ln.est)
-
-italian_exp <- conexp$new(italian.towns$PopResidente)
-italian.exp.est <- estimate_xmin(italian_exp)
-italian_exp$setXmin(italian.exp.est)
-
+italian.ln <- conlnorm$new(italian.towns$PopResidente)
+italian.ln$setXmin(estimate_xmin(italian.ln))
+italian.ln$setPars(estimate_pars(italian.ln))
 
 #bs.pl <- bootstrap(m_pl, no_of_sims=10, threads=8)
 
 par(mar=c(3, 3, 2, 1), mgp=c(2, 0.4, 0), tck=-.01,
     cex.axis=0.9, las=1)
 
-plot(italian_pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
+plot(italian.pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
      xlab="Population", ylab="CDF")
-lines(italian_pl, col=2)
-lines(italian_ln, col=3)
-lines(italian_exp, col=4)
+lines(italian.pl, col=2)
+lines(italian.ln, col=3)
 
-# Test for hypothesis
-#bs_p <- bootstrap_p(m_pl, threads = 7)
+
+# Test for hypothesis; null hypothesis is that fit is power-law
+italian.pl.fit <- bootstrap_p(italian.pl, no_of_sims = 5000, threads = 8)
+plot(italian.pl.fit)
 
 #############
 # MOBY DICK #
 #############
 data("moby", package="poweRlaw")
 
-moby_pl <- displ$new(moby)
-moby.est <- estimate_xmin(moby_pl)
+moby.pl <- displ$new(moby)
+moby.pl$setXmin(estimate_xmin(moby.pl))
+moby.pl$setPars(estimate_pars(moby.pl))
 
-moby_pl$setXmin(moby.est)
 
-moby.bs = bootstrap(moby_pl, no_of_sims=100, threads=8)
+moby.bs <- bootstrap(moby.pl, no_of_sims=1000, threads=8)
+plot(moby.bs, trim = .1)
+hist(moby.bs$bootstraps[,2], breaks = "fd")
+hist(moby.bs$bootstraps[,3], breaks = "fd")
 
-plot(moby_pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
+moby.test <- bootstrap_p()
+
+plot(moby.pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
      xlab="Word Occurrance", ylab="CDF")
-lines(moby_pl, col=2)
+lines(moby.pl, col=2)
 
 #################
 # UK POPULATION #
