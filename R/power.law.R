@@ -9,10 +9,72 @@ tryCatch({
   stop(conditionMessage(w))
 })
 
+par(mar=c(3, 3, 2, 1), mgp=c(2, 0.4, 0), tck=-.01,
+    cex.axis=0.9, las=1)
+
+
 #################
 # ITALIAN TOWNS #
 #################
 italian.towns <- read.csv2("./data-sources/comuni_italiani.csv")
+
+bins <- 100
+
+population.bins <- hist(italian.towns$PopResidente,
+                        breaks = seq(from = min(italian.towns$PopResidente), 
+                                     to = max(italian.towns$PopResidente), length.out = bins),
+                        plot=FALSE)
+
+population.log.bins <- hist(italian.towns$PopResidente,
+           breaks = exp(seq(log(min(italian.towns$PopResidente)), log(max(italian.towns$PopResidente)), len = bins)),
+           plot=FALSE)
+
+old.par <- par()
+
+par(mfrow=c(1,2))
+
+# Linear Binning
+plot(population.bins$mids, 
+     population.bins$density,
+     cex = .4,
+     type = "o",
+     pch = 16, 
+     col = "darkblue",
+     ylab = "Comuni [%]",
+     xlab = "Popolazione")
+
+plot(population.bins$mids, 
+     population.bins$density,
+     cex = .4,
+     type = "o",
+     pch = 16, 
+     col = "darkblue",
+     log = "xy",
+     ylab = "Comuni [%]",
+     xlab = "Popolazione")
+
+# Logarithmic Binning - useful to clean noise on the right tail (expecially if this is heavily skewed)
+plot(population.log.bins$mids, 
+     population.log.bins$density,
+     cex = .4,
+     type = "o",
+     pch = 16, 
+     col = "darkblue",
+     ylab = "Comuni [%]",
+     xlab = "Popolazione")
+
+plot(population.log.bins$mids, 
+     population.log.bins$density,
+     cex = .4,
+     type = "o",
+     pch = 16, 
+     col = "darkblue",
+     log = "xy",
+     ylab = "Comuni [%]",
+     xlab = "Popolazione")
+
+# discrete power-law fitting -> linear binning
+italian.binned.pl <- displ$new(italian.towns.binned$counts.linear)
 
 italian.pl <- conpl$new(italian.towns$PopResidente)
 italian.pl$setXmin(estimate_xmin(italian.pl))
