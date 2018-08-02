@@ -14,6 +14,7 @@ LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
 
-BuildType: Website
+BuildType: Custom
+CustomScriptPath: R/build_blog.R
 
 QuitChildProcessesOnExit: Yes

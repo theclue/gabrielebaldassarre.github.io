@@ -46,7 +46,7 @@ Just to test inline R expressions[^2] in **knitr**, we know the first element in
 
 [^2]: The syntax in R Markdown for inline expressions is `` `r code` ``, where `code` is the R expression that you want to evaluate, e.g. `x[1]`.
 
-```{r cars, fig.height=5, fig.width=7, fig.cap='A scatterplot of the cars data'}
+```{r cars, fig.alt = 'Test', fig.cap='A scatterplot of the cars data'}
 par(mar = c(4, 4, .1, .1), bg = 'transparent')
 plot(cars, pch = 19, col = 'red')  # a scatterplot
 ```
