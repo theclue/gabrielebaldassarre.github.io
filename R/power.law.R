@@ -9,9 +9,6 @@ tryCatch({
   stop(conditionMessage(w))
 })
 
-par(mar=c(3, 3, 2, 1), mgp=c(2, 0.4, 0), tck=-.01,
-    cex.axis=0.9, las=1)
-
 
 #################
 # ITALIAN TOWNS #
@@ -33,46 +30,8 @@ old.par <- par()
 
 par(mfrow=c(1,2))
 
-# Linear Binning
-plot(population.bins$mids, 
-     population.bins$density,
-     cex = .4,
-     type = "o",
-     pch = 16, 
-     col = "darkblue",
-     ylab = "Comuni [%]",
-     xlab = "Popolazione")
-
-plot(population.bins$mids, 
-     population.bins$density,
-     cex = .4,
-     type = "o",
-     pch = 16, 
-     col = "darkblue",
-     log = "xy",
-     ylab = "Comuni [%]",
-     xlab = "Popolazione")
-
-# Logarithmic Binning - useful to clean noise on the right tail (expecially if this is heavily skewed)
-plot(population.log.bins$mids, 
-     population.log.bins$density,
-     cex = .4,
-     type = "o",
-     pch = 16, 
-     col = "darkblue",
-     ylab = "Comuni [%]",
-     xlab = "Popolazione")
-
-plot(population.log.bins$mids, 
-     population.log.bins$density,
-     cex = .4,
-     type = "o",
-     pch = 16, 
-     col = "darkblue",
-     log = "xy",
-     ylab = "Comuni [%]",
-     xlab = "Popolazione")
-
+# Log Binning
+# (better than linear binning due to the nature of data)
 
 italian.pl <- conpl$new(italian.towns$PopResidente)
 italian.pl$setXmin(estimate_xmin(italian.pl))
@@ -84,27 +43,63 @@ italian.ln$setPars(estimate_pars(italian.ln))
 
 #bs.pl <- bootstrap(m_pl, no_of_sims=10, threads=8)
 
-par(mar=c(3, 3, 3, 3), mgp=c(2, 0.4, 0), tck=-.01,
-    cex.axis=0.9, las=1)
+par(mar=c(4, 4, 2, 1),
+    mgp=c(3, 0.4, 0),
+    tck=-.01,
+    oma=c(0,1,2,0),
+    cex.axis=0.9,
+    las=1)
+
+######################################
+# EXPLORATORY PLOT AND MODEL FITTING #
+######################################
+
+# Log-binning counts in log-log scale shows a log-norm behaviour
+plot(population.log.bins$mids, 
+     population.log.bins$density,
+     cex = .4,
+     type = "p",
+     pch = 16, 
+     col = "darkblue",
+     log = "xy",
+     ylab = "Comuni [Densità]",
+     xlab = "Popolazione",
+     panel.first=grid(col="grey80"),
+     main = "Densità")
 
 plot(population.log.bins$mids, 
-     population.log.bins$counts,
-     cex = .5,
+     population.log.bins$counts/sum(population.log.bins$counts),
+     cex = .4,
      type = "p",
      pch = 16, 
      col = "darkblue",
      log = "xy",
      ylab = "Comuni [%]",
      xlab = "Popolazione",
-     panel.first=grid(col="grey80"))
+     panel.first=grid(col="grey80"),
+     main = "Osservazioni")
 
-plot(italian.pl, pch = 16, cex = .5, col = "grey", bg=2, panel.first=grid(col="grey80"),
-     xlab="Population", ylab="CDF")
-lines(italian.pl, col=2)
-lines(italian.ln, col=3)
+title("Comuni Italiani - Logarithmic Binning", outer=TRUE)
 
+# Log-norm is demonstrated here, thus the fitting
+plot(density(log(italian.towns$PopResidente)),
+     col = "darkblue",
+     panel.first=grid(col="grey80"),
+     main = "Densità")
 
-# Test for hypothesis; null hypothesis is that fit is log-norm
+plot(italian.pl, pch = 16, cex = .2, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Popolazione", ylab="CDF", main = "Probabilità Cumulativa")
+lines(italian.pl, col=2, lwd = 1.4)
+lines(italian.ln, col=3, lwd = 1.4)
+
+title("Comuni Italiani - Densità e CDF fitting", outer=TRUE)
+
+###########################
+# TEST FOR HYPOTHESIS     #
+# -                       #
+# null hypothesis is that #
+# data fits a log-norm    #
+###########################
 italian.ln.fit <- bootstrap_p(italian.ln, no_of_sims = 5000, threads = 8)
 plot(italian.nl.fit)
 
