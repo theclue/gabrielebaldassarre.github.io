@@ -6,3 +6,4 @@ _site/
 R/.DS_Store
 .Rhistory
 cache/
+.RData
