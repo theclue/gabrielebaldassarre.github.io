@@ -7,25 +7,7 @@ header:
 editor_options: 
   chunk_output_type: inline
 ---
-```{r setup, include = FALSE}
-if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
-tryCatch({
-  p_load("tidyverse", "poweRlaw")
-}, warning=function(w){
-  stop(conditionMessage(w))
-})
 
-old.par <- par()
-
-par(mar=c(4, 4, 2, 1),
-    mgp=c(3, 0.4, 0),
-    tck=-.01,
-    oma=c(0,1,2,0),
-    cex.axis=0.9,
-    las=1)
-
-
-```
 Le legge di potenza altri non è che una funzione matematica con un andamento esponenziale caratterizzato da un parametro che può essere sia negativo che positivo e che nella sua forma più generale si esprime come
 
 $$ f(x) = ax^k $$
@@ -42,28 +24,7 @@ Il modo più "naturale" in cui ci aspettiamo di misurare una grandezza è una di
 
 Non è detto, però, che le osservazioni si distribuiscano in modo simmetrico attorno ad un valore tipico. Alcune grandezze, infatti, si esprimono in popolazioni in cui si ha la maggioranza delle osservazioni su valori _bassi_ delle ascisse, ma presentano anche diverse osservazioni molto a destra, in una lunga _coda_ , con osservazioni che possono raggiungere valori della ascissa molto grandi, anche di diversi ordini di granzezza più grandi della media. Quello più sotto ne è un tipico esempio.
 
-```{r mobydick, fig.asp = .6, fig.alt="Esempio di distribuzione secondo Zipf", fig.cap="Questi grafici mostrano le varie parole contenute nel Moby Dick di Herman Melville. In ascissa sono rappresentate le frequenze con cui una parola occorre nel testo. In ordinata, invece, il numero di parole che occorrono con una specifica frequenza. Sebbene la maggior parte delle parole abbiamo un numero di occorrenze molto basso, ce ne sono alcune che incorrono molto più frequentemente nel testo, causando la lunga coda a destra che, in un ripido decadimento, caratterizza la distribuzione, Il plot di destra mostra gli stessi dati ma su una scala logaritmica su entrambi gli assi, in modo da evidenziare meglio l'andamento esponenziale di tale decadimento. Il linguista George Kingsley Zipf ha potuto verificare, negli anni Trenta del Novecento, che la maggior parte della produzione letteraria occidentale segue questa distribuzione."}
-data("moby", package="poweRlaw")
-
-moby.bins <- hist(moby,
-                  breaks = seq(from = min(moby), 
-                               to = max(moby), length.out = 3000),
-                  plot=FALSE)
-
-par(mar=c(4,4,0,1))
-layout(matrix(c(1,2,1,3),ncol=2),heights=c(1,3))
-plot.new()
-text(0.5, 0.5, "Moby Dick - Distribuzione delle parole e loro occorrenze nel testo", cex = 1.2, font = 2)
-plot(moby.bins$mids, 
-     moby.bins$counts/sum(moby.bins$counts),
-     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
-     xlab="Frequenza", ylab="Numero di parole", type = "p")
-plot(moby.bins$mids, 
-     moby.bins$counts/sum(moby.bins$counts),
-     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
-     xlab="Frequenza [Log]", ylab="Numero di parole [Log]", log = "xy", type = "p")
-
-```
+![Questi grafici mostrano le varie parole contenute nel Moby Dick di Herman Melville. In ascissa sono rappresentate le frequenze con cui una parola occorre nel testo. In ordinata, invece, il numero di parole che occorrono con una specifica frequenza. Sebbene la maggior parte delle parole abbiamo un numero di occorrenze molto basso, ce ne sono alcune che incorrono molto più frequentemente nel testo, causando la lunga coda a destra che, in un ripido decadimento, caratterizza la distribuzione, Il plot di destra mostra gli stessi dati ma su una scala logaritmica su entrambi gli assi, in modo da evidenziare meglio l'andamento esponenziale di tale decadimento. Il linguista George Kingsley Zipf ha potuto verificare, negli anni Trenta del Novecento, che la maggior parte della produzione letteraria occidentale segue questa distribuzione.](/assets/figures/mobydick-1.svg)
 
 Il grafico in scala _log-log_, mostra chiaramente un andamento assimilabile a quello di una retta per buona parte del suo dominio. Non lo è, apparentemente, nella parte più a destra, dove, però, vige più che altro un elevato errore di campionamento (come dicevamo, sono pochissime le parole ad avere un numero di occorrenze così elevato).
 
@@ -98,25 +59,7 @@ Un modo più accurato consiste allora nel _variare la dimensione degli intervall
 La logica più comune di binning è quella su base logaritmica, creando una sequenza di intervalli di dimensione esponenzialmente crescente ad es. \\( 2^0=1, 2^1=2, 2^2=4, 2^3=8,...\\)
 In questo modo, gli intervalli a destra otterranno un maggior numero di campioni, abbattendo il rumore statistico. Applichiamo questa trasformazione ai dati di Moby Dick:
 
-```{r mobydick.log, fig.asp = .6, fig.alt="Logarithmic Binning & Power Law", fig.cap="Il _logarithmic binning_ incrementale consente di ridurre il rumore sulla parte destra della distribuzione e, essendo una sequenza esponenziale, presenterà degli intervalli equispaziati sull'asse delle ascisse, espresso su scala logaritmica."}
-moby.log.bins <- hist(moby,
-           breaks = exp(seq(log(min(moby)), log(max(moby)), len = 10)),
-           plot=FALSE)
-
-par(mar=c(4,4,0,1))
-layout(matrix(c(1,2,1,3),ncol=2),heights=c(1,3))
-plot.new()
-text(0.5, 0.5, "Moby Dick - Logarithmic Binning", cex = 1.2, font = 2)
-plot(moby.log.bins$mids, 
-     moby.log.bins$counts/sum(moby.log.bins$counts),
-     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
-     xlab="Frequenza", ylab="Numero di parole", type = "p")
-plot(moby.log.bins$mids, 
-     moby.log.bins$counts/sum(moby.log.bins$counts),
-     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
-     xlab="Frequenza [Log]", ylab="Numero di parole [Log]", log = "xy", type = "p")
-
-```
+![Il _logarithmic binning_ incrementale consente di ridurre il rumore sulla parte destra della distribuzione e, essendo una sequenza esponenziale, presenterà degli intervalli equispaziati sull'asse delle ascisse, espresso su scala logaritmica.](/assets/figures/mobydick.log-1.svg)
 
 Il grafico di destra, su scala logaritmica, è ancora una volta quello più interessante. Grazie al logarithmic binning, infatti, abbiamo linearizzato efficacemente anche la parte destra della distribuzione e ora è possibile applicare una regressione per stimare \\( \alpha \\). Tuttavia, noterete come i punti caratterizzanti ora siano molti di meno.
 
@@ -139,17 +82,9 @@ possiamo scrivere
 $$ P(x) = C\int_x^\infty x^{\prime-\alpha}dx^\prime = \bbox[5px,border:1px solid red]{ \frac{C}{\alpha - 1}x^{-(\alpha - 1 )}} \tag{CDF} $$
 
 La CDF \\( P(x) \\) di una power law (nel box rosso) è a sua volta, come si può vedere, una power law ma con esponente \\( \alpha - 1 \\); questo significa che una volta rappresentata su scala log-log presenterà ancora un andamento rettilineo, ma con una pendenza diversa.
-Soprattutto,  essa è stata ottenuta _senza_ un binning, quindi senza perdita di informazioni e senza aver dovuto formulare alcuna ipotesi sull'ampiezza degli intervalli (ovvero, fare una scelta empirica). Ancora una volta, usiamo il dataset di Moby Dick per visualizzare la CDF:
+Soprattutto,  essa è stata ottenuta _senza_ un binning, quindi senza perdita di informazioni e senza aver dovuto formulare alcuna ipotesi sull'ampiezza degli intervalli (ovvero, fare una scelta empirica). Per l'ennesima, vediamo i dati su Moby Dick, visualizzando la CDF:
 
-```{r mobydick.cdf, fig.asp = 1, fig.alt=""}
-moby.pl <- conpl$new(moby)
-moby.pl$setXmin(estimate_xmin(moby.pl))
-moby.pl$setPars(estimate_pars(moby.pl))
-
-plot(moby.pl, pch = 16, cex = .2, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
-     xlab="Frequenza", ylab="CDF", main = "Moby Dick - CDF")
-lines(moby.pl, col=2, lwd = 1.4)
-```
+![plot of chunk mobydick.cdf](/assets/figures/mobydick.cdf-1.svg)
 
 ##
 
