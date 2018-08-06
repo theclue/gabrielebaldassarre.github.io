@@ -7,7 +7,26 @@ header:
 editor_options: 
   chunk_output_type: inline
 ---
+```{r setup, include = FALSE}
+if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
+tryCatch({
+  p_load("tidyverse", "poweRlaw")
+}, warning=function(w){
+  stop(conditionMessage(w))
+})
 
+old.par <- par()
+
+par(mar=c(4, 4, 2, 1),
+    mgp=c(3, 0.4, 0),
+    tck=-.01,
+    oma=c(0,1,2,0),
+    cex.axis=0.9,
+    las=1)
+
+bins <- 100
+
+```
 Le legge di potenza altri non è che una funzione matematica con un andamento esponenziale caratterizzato da un parametro che può essere sia negativo che positivo e che nella sua forma più generale si esprime come
 
 $$ f(x) = ax^k $$
@@ -18,13 +37,34 @@ Diventa, però, interessante quando descrive una _distribuzione di probabilità_
 
 Ma prima di addentrarci nello studio della legge di potenza, facciamo alcuni esempi chiarificatori di come si presentano, spesso, le grandezze in natura.
 
-## Distribuzioni normali e distribuzioni di potenza
+## Distribuzioni normali e...meno normali
 
 Il modo più "naturale" in cui ci aspettiamo di misurare una grandezza è una distribuzione _centrale_, dove la maggior parte delle osservazioni si concentrano attorno a un valore tipico, il _valore medio_, e decadono molto velocemente in modo simmetrico ai due estremi. Molte distribuzioni, sia presenti in natura che costruite dall'uomo, hanno queste caratteristiche, che possono essere descritte, con un livello più o meno accettabile di approssimazione, con tutta una famiglia di modelli statistici, come la [distribuzione gaussiana](https://it.wikipedia.org/wiki/Distribuzione_normale), la [distribuzione binomiale](https://it.wikipedia.org/wiki/Distribuzione_binomiale) e la [quella di Poisson](https://it.wikipedia.org/wiki/Distribuzione_di_Poisson) che, dati una serie di parametri, è in grado di _spiegare_ e _descrivere_ la popolazione.
 
 Non è detto, però, che le osservazioni si distribuiscano in modo simmetrico attorno ad un valore tipico. Alcune grandezze, infatti, si esprimono in popolazioni in cui si ha la maggioranza delle osservazioni su valori _bassi_ delle ascisse, ma presentano anche diverse osservazioni molto a destra, in una lunga _coda_ , con osservazioni che possono raggiungere valori della ascissa molto grandi, anche di diversi ordini di granzezza più grandi della media. Quello più sotto ne è un tipico esempio.
 
-![Questi grafici mostrano le varie parole contenute nel Moby Dick di Herman Melville. In ascissa sono rappresentate le frequenze con cui una parola occorre nel testo. In ordinata, invece, il numero di parole che occorrono con una specifica frequenza. Sebbene la maggior parte delle parole abbiamo un numero di occorrenze molto basso, ce ne sono alcune che incorrono molto più frequentemente nel testo, causando la lunga coda a destra che, in un ripido decadimento, caratterizza la distribuzione, Il plot di destra mostra gli stessi dati ma su una scala logaritmica su entrambi gli assi, in modo da evidenziare meglio l'andamento esponenziale di tale decadimento. Il linguista George Kingsley Zipf ha potuto verificare, negli anni Trenta del Novecento, che la maggior parte della produzione letteraria occidentale segue questa distribuzione.](/assets/figures/mobydick-1.svg)
+```{r mobydick, fig.asp = .6, fig.alt="Esempio di distribuzione secondo Zipf", fig.cap="Questi grafici mostrano le varie parole contenute nel Moby Dick di Herman Melville. In ascissa sono rappresentate le frequenze con cui una parola occorre nel testo. In ordinata, invece, il numero di parole che occorrono con una specifica frequenza. Sebbene la maggior parte delle parole abbiamo un numero di occorrenze molto basso, ce ne sono alcune che incorrono molto più frequentemente nel testo, causando la lunga coda a destra che, in un ripido decadimento, caratterizza la distribuzione, Il plot di destra mostra gli stessi dati ma su una scala logaritmica su entrambi gli assi, in modo da evidenziare meglio l'andamento esponenziale di tale decadimento. Il linguista George Kingsley Zipf ha potuto verificare, negli anni Trenta del Novecento, che la maggior parte della produzione letteraria occidentale segue questa distribuzione."}
+data("moby", package="poweRlaw")
+
+moby.bins <- hist(moby,
+                  breaks = seq(from = min(moby), 
+                               to = max(moby), length.out = 3000),
+                  plot=FALSE)
+
+par(mar=c(4,4,0,1))
+layout(matrix(c(1,2,1,3),ncol=2),heights=c(1,3))
+plot.new()
+text(0.5, 0.5, "Moby Dick - Distribuzione delle parole e loro occorrenze nel testo", cex = 1.2, font = 2)
+plot(moby.bins$mids, 
+     moby.bins$counts/sum(moby.bins$counts),
+     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Frequenza", ylab="Numero di parole", type = "p")
+plot(moby.bins$mids, 
+     moby.bins$counts/sum(moby.bins$counts),
+     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Frequenza [Log]", ylab="Numero di parole [Log]", log = "xy", type = "p")
+
+```
 
 Il grafico in scala _log-log_, mostra chiaramente un andamento assimilabile a quello di una retta per buona parte del suo dominio. Non lo è, apparentemente, nella parte più a destra, dove, però, vige più che altro un elevato errore di campionamento (come dicevamo, sono pochissime le parole ad avere un numero di occorrenze così elevato).
 
@@ -62,7 +102,25 @@ Un modo più accurato consiste allora nel _variare la dimensione dei bin dell'is
 La logica più comune di binning è quella su base logaritmica, andando a incrementare la dimensione dei bin in modo esponenziale es. 1, 2, 4, 8...
 In questo modo, i bin più a destra otterranno maggiori campioni e il rumore statistico va a diminuire; applichiamo questa trasformazione ai dati di Moby Dick:
 
-![Il logarithmic binning incrementale consente di ridurre il rumore sulla parte destra della distribuzione e consente di avere dei bin che sull'ascissa logaritmica sono equispaziate. Per quanto utile per provare ad applicare una regressione lineare, tuttavia, bisogna tener presente che tanto più il dominio di _x_ si estende su vari ordini di grandezza, tanto più i _bin_ devono essere ampi per poter attenuare efficacemente il rumore. Questo comporta una notevole perdita di informazione.](/assets/figures/mobydick.log-1.svg)
+```{r mobydick.log, fig.asp = .6, fig.alt="Logarithmic Binning & Power Law", fig.cap="Il logarithmic binning incrementale consente di ridurre il rumore sulla parte destra della distribuzione e consente di avere dei bin che sull'ascissa logaritmica sono equispaziate. Per quanto utile per provare ad applicare una regressione lineare, tuttavia, bisogna tener presente che tanto più il dominio di _x_ si estende su vari ordini di grandezza, tanto più i _bin_ devono essere ampi per poter attenuare efficacemente il rumore. Questo comporta una notevole perdita di informazione."}
+moby.log.bins <- hist(moby,
+           breaks = exp(seq(log(min(moby)), log(max(moby)), len = 10)),
+           plot=FALSE)
+
+par(mar=c(4,4,0,1))
+layout(matrix(c(1,2,1,3),ncol=2),heights=c(1,3))
+plot.new()
+text(0.5, 0.5, "Moby Dick - Logarithmic Binning", cex = 1.2, font = 2)
+plot(moby.log.bins$mids, 
+     moby.log.bins$counts/sum(moby.log.bins$counts),
+     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Frequenza", ylab="Numero di parole", type = "p")
+plot(moby.log.bins$mids, 
+     moby.log.bins$counts/sum(moby.log.bins$counts),
+     cex = .5, pch = 16, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Frequenza [Log]", ylab="Numero di parole [Log]", log = "xy", type = "p")
+
+```
 
 Il grafico di destra, su scala logaritmica, è ancora una volta quello più interessante. Grazie al logarithmic binning, infatti, abbiamo linearizzato efficacemente anche la parte destra della distribuzione e ora è possibile, volendo, applicare una regressione per stimare \\( \alpha \\). Tuttavia, noterete come i punti caratterizzanti ora siano molti di meno.
 
@@ -84,9 +142,17 @@ $$ P(x) = C\int_x^\infty x^{\prime-\alpha}dx^\prime = \bbox[5px,border:1px solid
 
 A parole, la CDF \\( P(x) \\) di una power law (nel box rosso) è a sua volta una power law ma con esponente \\( \alpha - 1)\\; una volta rappresentata su scala log-log presenterà ancora una volta un andamento rettilineo, ma con una pendenza diversa. Ma la cosa più importante è che è stata ottenuta _senza_ un binning, quindi senza perdita di informazioni e senza aver dovuto formulare alcuna ipotesi, e fare una scelta, sulla loro ampiezza. Per l'ultima volta, vediamo i dati su Moby Dick, visualizzando la CDF:
 
-![plot of chunk mobydick.cdf](/assets/figures/mobydick.cdf-1.svg)
+```{r mobydick.cdf, fig.asp = 1, fig.alt=""}
+moby.pl <- conpl$new(moby)
+moby.pl$setXmin(estimate_xmin(moby.pl))
+moby.pl$setPars(estimate_pars(moby.pl))
 
+plot(moby.pl, pch = 16, cex = .2, col = "darkblue", bg=2, panel.first=grid(col="grey80"),
+     xlab="Frequenza", ylab="CDF", main = "Moby Dick - CDF")
+lines(moby.pl, col=2, lwd = 1.4)
+```
 
+##
 
 
 

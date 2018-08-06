@@ -15,6 +15,7 @@ local({
   knitr::opts_chunk$set(tidy=FALSE,
                         warning=FALSE,
                         message=FALSE,
+                        echo=FALSE,
                         cache=TRUE, 
                         comment=NA,
                         verbose=TRUE,
@@ -25,15 +26,15 @@ local({
   knitr::opts_chunk$set(fig.path   = sprintf("assets/figures/", d),
                         cache.path = sprintf("cache/", d))
   
-  # knitr::knit_hooks$set(figure = function(before, options, envir) {
-  #   if (!before) {
-  #     ## after a chunk has been evaluated
-  #     name <- paste(options$fig.path, options$label, sep = '')
-  #     message(name)
-  #     return(sprintf("{%% include figure image_path=\"%s\" alt=\"%s\" caption=\"%s\" %%}", name, options$fig.alt, options$fig.cap))
-  # 
-  #   }
-  # })
+   knitr::knit_hooks$set(figure = function(before, options, envir) {
+     if (!before) {
+       ## after a chunk has been evaluated
+       name <- paste(options$fig.path, options$label, sep = '')
+       message(name)
+       return(sprintf("{%% include figure image_path=\"%s\" alt=\"%s\" caption=\"%s\" %%}", name, options$fig.alt, options$fig.cap))
+   
+     }
+   })
   
   knit(
     a[1], a[2], quiet = FALSE, encoding = "UTF-8",
