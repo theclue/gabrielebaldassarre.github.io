@@ -18,7 +18,7 @@ Diventa, però, interessante quando descrive una _distribuzione di probabilità_
 
 Ma prima di addentrarci nello studio della legge di potenza, facciamo alcuni esempi chiarificatori di come si presentano, spesso, le grandezze in natura.
 
-## Distribuzioni normali e distribuzioni di potenza
+## Distribuzioni normali e...meno normali
 
 Il modo più "naturale" in cui ci aspettiamo di misurare una grandezza è una distribuzione _centrale_, dove la maggior parte delle osservazioni si concentrano attorno a un valore tipico, il _valore medio_, e decadono molto velocemente in modo simmetrico ai due estremi. Molte distribuzioni, sia presenti in natura che costruite dall'uomo, hanno queste caratteristiche, che possono essere descritte, con un livello più o meno accettabile di approssimazione, con tutta una famiglia di modelli statistici, come la [distribuzione gaussiana](https://it.wikipedia.org/wiki/Distribuzione_normale), la [distribuzione binomiale](https://it.wikipedia.org/wiki/Distribuzione_binomiale) e la [quella di Poisson](https://it.wikipedia.org/wiki/Distribuzione_di_Poisson) che, dati una serie di parametri, è in grado di _spiegare_ e _descrivere_ la popolazione.
 
@@ -86,7 +86,7 @@ A parole, la CDF \\( P(x) \\) di una power law (nel box rosso) è a sua volta un
 
 ![plot of chunk mobydick.cdf](/assets/figures/mobydick.cdf-1.svg)
 
-
+##
 
 
 
