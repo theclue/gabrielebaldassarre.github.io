@@ -7,7 +7,7 @@ header:
 editor_options: 
   chunk_output_type: inline
 ---
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, cache=FALSE}
 if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
 tryCatch({
   p_load("tidyverse", "poweRlaw")
@@ -24,7 +24,6 @@ par(mar=c(4, 4, 2, 1),
     cex.axis=0.9,
     las=1)
 
-bins <- 100
 
 ```
 Le legge di potenza altri non è che una funzione matematica con un andamento esponenziale caratterizzato da un parametro che può essere sia negativo che positivo e che nella sua forma più generale si esprime come
@@ -91,18 +90,18 @@ Innanzitutto una premessa, che facciamo riprendendo l'esempio di prima, attribui
 
 Tanto per cominciare, questo ci consente di pensare alla legge di potenza come a una funzione di  __distribuzione cumulativa di probabilità__. E questo ci aiuterà tantissimo tra pochi istanti.
 
-Ma, tornando a bomba; il modo più semplice per individuare una power law è, in prima istanza, con un istogramma. Lo abbiamo involontariamente già visto con l'esempio: abbiamo rappresentato la popolazione in forma di istogramma (usando punti invece che barre per non affollare il grafico, ma il senso è lo stesso). In particolare, l'andamento (quasi) lineare del grafico su assi logaritmici ci ha fatto pensare subito ad una power law.
+Ma, tornando a bomba; il modo più semplice per individuare una power law è, in prima istanza, con un istogramma. Lo abbiamo involontariamente già visto con l'esempio precedente, in cui abbiamo rappresentato la popolazione in forma di istogramma (usando punti invece che barre per non affollare il grafico, ma il senso è lo stesso). In particolare, l'andamento (quasi) lineare del grafico su assi logaritmici ci ha fatto pensare subito ad una power law.
 
-L'istogramma è stato costruito affinché l'ampiezza delle "barre" fosse costante, così che il grafico risultante sia piuttosto chiaro nella parte sinistra, dove si concentrano la maggior parte delle osservazioni, ma molto confusa sulla parte destra, dove ogni barra (o _bin_) dell'istogramma ha pochi elementi e perciò le piccole _fluttuazioni_ nel numero di componenti nel gruppo causa un grande scostamento sul grafico su scala logaritmica.
+L'istogramma è stato costruito affinché l'ampiezza delle "barre" (o, più propriamente, _bin_ o intervalli) fosse costante, così che il grafico risultante sia piuttosto chiaro nella parte sinistra, dove si concentrano la maggior parte delle osservazioni, ma molto confusa sulla parte destra, dove ogni intervallo dell'istogramma ha pochi elementi e perciò le piccole _fluttuazioni_ nel numero di componenti nel gruppo causa un grande scostamento sul grafico su scala logaritmica.
 
 E questa non è una buona cosa non tanto dal punto di vista "estetico" del grafico, ma sostanziale: andando a costruire su quel campione un modello di regressione per stimare il modulo di \\( \alpha \\), il rumore statistico sulla coda interverrà negativamente, introducendo una forte sottostima.
 
-Un modo più accurato consiste allora nel _variare la dimensione dei bin dell'isogramma e normalizzare i risultati_, in modo da ottenere un conteggio _per unità di grandezza di x_.
+Un modo più accurato consiste allora nel _variare la dimensione degli intervalli dell'isogramma con uno schema costante e normalizzare i risultati_, in modo da ottenere un conteggio _per unità di grandezza di x_.
 
-La logica più comune di binning è quella su base logaritmica, andando a incrementare la dimensione dei bin in modo esponenziale es. 1, 2, 4, 8...
-In questo modo, i bin più a destra otterranno maggiori campioni e il rumore statistico va a diminuire; applichiamo questa trasformazione ai dati di Moby Dick:
+La logica più comune di binning è quella su base logaritmica, creando una sequenza do intervalli di dimensione esponenzialmente crescente ad es. \\( 2^0=1, 2^1=2, 2^2=4, 2^3=8,...)
+In questo modo, gli intervalli a destra otterranno un maggior numero di campioni, abbattendo il rumore statistico. Applichiamo questa trasformazione ai dati di Moby Dick:
 
-```{r mobydick.log, fig.asp = .6, fig.alt="Logarithmic Binning & Power Law", fig.cap="Il logarithmic binning incrementale consente di ridurre il rumore sulla parte destra della distribuzione e consente di avere dei bin che sull'ascissa logaritmica sono equispaziate. Per quanto utile per provare ad applicare una regressione lineare, tuttavia, bisogna tener presente che tanto più il dominio di _x_ si estende su vari ordini di grandezza, tanto più i _bin_ devono essere ampi per poter attenuare efficacemente il rumore. Questo comporta una notevole perdita di informazione."}
+```{r mobydick.log, fig.asp = .6, fig.alt="Logarithmic Binning & Power Law", fig.cap="Il _logarithmic binning_ incrementale consente di ridurre il rumore sulla parte destra della distribuzione e, essendo una sequenza esponenziale, presenterà degli intervalli equispaziati sull'asse delle ascisse, espresso su scala logaritmica."}
 moby.log.bins <- hist(moby,
            breaks = exp(seq(log(min(moby)), log(max(moby)), len = 10)),
            plot=FALSE)
@@ -124,23 +123,26 @@ plot(moby.log.bins$mids,
 
 Il grafico di destra, su scala logaritmica, è ancora una volta quello più interessante. Grazie al logarithmic binning, infatti, abbiamo linearizzato efficacemente anche la parte destra della distribuzione e ora è possibile, volendo, applicare una regressione per stimare \\( \alpha \\). Tuttavia, noterete come i punti caratterizzanti ora siano molti di meno.
 
-In effetti, per eliminare il rumore si è reso necessario creare dei _bin_ molto ampi. E questo ha comportato una notevole perdita di informazioni. Per spiegare meglio il concetto: molto banalmente, una volta aggregate le misurazioni all'interno di un bin, le abbiamo perse come entità distinte. E tanto più ampi sono i bin, tante più sono le osservazioni che abbiamo aggregato insieme, e sulle quali non è più possibile affermare nulla singolarmente.
+In effetti, per eliminare il rumore si è reso necessario creare degli intervalli molto ampi e questo ha comportato una notevole perdita di informazioni. Per spiegare meglio il concetto: una volta aggregate le misurazioni all'interno di un bin, le abbiamo perse come entità distinte. E tanto più ampi sono gli intervalli, tante più sono le osservazioni che abbiamo aggregato insieme, e sulle quali non è più possibile affermare nulla singolarmente.
 
-In particolare, è sufficiente che \\( \alpha > 1 \\) per far sì che un bin abbia meno campioni del bin immediatamente alla sua sinistra. E come abbiamo anticipato, la maggior parte delle reti naturali e sociali ha \\( \alpha \\) compresto tra 2 e 3.
+In particolare, è sufficiente che \\( \alpha > 1 \\), cosa che praticamente avviene _sempre_, per far sì che un intervallo abbia meno campioni dell'intervallo immediatamente alla sua sinistra.
 
-Il modo certamente migliore per visualizzare i dati di una (presunta) power law è quello di rappresentarla mediante la __distribuzione di probabilità cumulativa__ (cumulative distribution function, o __CDF__). Questo grazie alla definizione che abbiamo dato a partire dalla legge di Zipf, in apertura di paragrafo. Se indichiamo con \\( P(x) \\) la probabilità che \\( x \\) abbia un valore non più uguale ma __maggiore o uguale__ a \\( x \\)
+Fortunatamente esiste un modo ancora migliore per rappresentare (e studiare) una power law e consiste nel rappresentarla mediante la __distribuzione di probabilità cumulativa__ (cumulative distribution function, o __CDF__).
+
+Se indichiamo con \\( P(x) \\) la probabilità che \\( x \\) abbia un valore non più semplicemente uguale ma __maggiore o uguale__ a \\( x \\)
 
 $$ P(x) = \int_x^\infty p(x^\prime)dx^\prime $$
 
-se la funzione è una power law allora 
+Poiché la \\( p(x) \\) è una power law di tipo
 
 $$ p(x) = Cx^{-\alpha} $$
 
-quindi
+possiamo scrivere
 
-$$ P(x) = C\int_x^\infty x^{\prime-\alpha}dx^\prime = \bbox[5px,border:1px solid red]{ \frac{C}{\alpha - 1}x^{-(\alpha - 1 )}} $$
+$$ P(x) = C\int_x^\infty x^{\prime-\alpha}dx^\prime = \bbox[5px,border:1px solid red]{ \frac{C}{\alpha - 1}x^{-(\alpha - 1 )}} \tag{CDF} $$
 
-A parole, la CDF \\( P(x) \\) di una power law (nel box rosso) è a sua volta una power law ma con esponente \\( \alpha - 1)\\; una volta rappresentata su scala log-log presenterà ancora una volta un andamento rettilineo, ma con una pendenza diversa. Ma la cosa più importante è che è stata ottenuta _senza_ un binning, quindi senza perdita di informazioni e senza aver dovuto formulare alcuna ipotesi, e fare una scelta, sulla loro ampiezza. Per l'ultima volta, vediamo i dati su Moby Dick, visualizzando la CDF:
+La CDF \\( P(x) \\) di una power law (nel box rosso) è a sua volta, come si può vedere, una power law ma con esponente \\( \alpha - 1)\\; questo significa che una volta rappresentata su scala log-log presenterà ancora un andamento rettilineo, ma con una pendenza diversa.
+Soprattutto,  essa è stata ottenuta _senza_ un binning, quindi senza perdita di informazioni e senza aver dovuto formulare alcuna ipotesi sull'ampiezza degli intervalli (ovvero, fare una scelta empirica). Per l'ennesima, vediamo i dati su Moby Dick, visualizzando la CDF:
 
 ```{r mobydick.cdf, fig.asp = 1, fig.alt=""}
 moby.pl <- conpl$new(moby)
@@ -154,6 +156,7 @@ lines(moby.pl, col=2, lwd = 1.4)
 
 ##
 
+La CDF 
 
 
 
