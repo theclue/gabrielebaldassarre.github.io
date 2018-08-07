@@ -78,7 +78,7 @@ Poiché questo servizio __supporta Jekyll__, è sufficiente un commit su un repo
 
 Tutto in automatico. E tutto gratis.
 
-Github non è, per la verità, l'unica scelta per questo tipo di servizio. Ma tutte le alternative che ho vagliato, tra cui [Travis CI](https://travis-ci.org/), pensate per siti più grandi e complessi e richiedevano un maggiore impegno per la messa in opera degli script di build & deploy, che, a differenza di Github, andrebbero scritti dall'utente. Questa versatilità spesso è utile, per esempio se si preferisce che il deploy sia fatto su server che non siano quelli di Github Pages, magari su soluzioni a pagamento più performanti. Questo blog, tuttavia, non ha i volumi di traffico tali da giustificare questo lavoro, così sono rimasto su Github e ho risparmiato tempo e soldi.
+Github non è, per la verità, l'unica scelta per questo tipo di servizio. Ma tutte le alternative che ho vagliato, tra cui [Travis CI](https://travis-ci.org/), sono pensate per siti più grandi e complessi e richiedevano un maggiore impegno per la messa in opera degli script di build & deploy, che, a differenza di Github, qui vanno scritti dall'utente. Questa versatilità è utile, per esempio se si preferisce che il deploy sia fatto su server che non siano quelli di Github Pages, magari su soluzioni a pagamento più performanti. Questo blog, tuttavia, non ha i volumi di traffico tali da giustificare questo lavoro, così sono rimasto su Github e ho risparmiato tempo e soldi.
 {: .notice--primary}
 
 ### Cloudflare
@@ -91,7 +91,7 @@ Fortunatamente ho scoperto una serie di bei prodotti, sempre gratuiti, offerti d
 
 Il motivo più ovvio per rivolgersi a Cloudflare è per il pannello di gestione del DNS, attraverso il quale ho potuto far puntare il nome a dominio di questo blog sul server di Github Pages.
 
-Ma subito sotto, è possibile abilitare un notevole layer di caching che, nella versione gratuita, apportano un grande beneficio solo ai contenuti _statici_ del sito. Ma, e qui sta il bello, grazie a Jekyll il blog è _completamente_ statico e, in effetti, i risultati sono eccellenti.
+Ma subito sotto, è possibile abilitare un notevole layer di caching che, nella versione gratuita, garantisce un miglioramento delle performance nei file _statici_ del sito. Ma, e qui sta il bello, grazie a Jekyll il blog è _completamente_ statico e questo significa sfruttare il caching in tutta la sua potenza (su questo blog, grazie a Cloudflare ho ottenuto una diminuzione del tempo di risposta del sito di quasi circa il 75%).
 
 Per finire, avrete notato che questo blog è servito tramite https.
 
