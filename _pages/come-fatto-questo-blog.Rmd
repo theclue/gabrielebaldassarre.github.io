@@ -5,6 +5,9 @@ excerpt: "Architettura, piattaforma, contenuti.<br />Diario di sviluppo di un bl
 header:
   overlay_image: /assets/images/blog-foundations-overlay.jpg
   overlay_filter: 0.3
+share: true
+related: false
+toc: true
 ---
 
 Per diversi anni, il motore sotto il cofano del mio blog è stato Wordpress, da me installato e manutenuto su un server virtuale su Digital Ocean. Ma con il passare del tempo, quella piattaforma ha tradito, secondo me, lo spirito originario ed è diventato un CMS general-purpose, mastodontico, lento e impegnativo dal punto di vista della gestione e della sicurezza. Anche solo la scelta (e il setup) del tema, operazione che in teoria dovrebbe essere quasi divertente, diventa lunga e noiosa. Tutto ciò è decisamente troppo, secondo me, per un blog, sia in termini economici che di tempo.
