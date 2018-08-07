@@ -37,13 +37,10 @@ Non solo, knitr è distribuito come package R, quindi la compilazione dei file .
 
 A titolo di esempio di come funziona il flusso, questa stessa pagina è partita come un file .Rmd e quello che segue è un pezzo di codice R che, eseguito da knitr, ha automticamente generato un file SVG con il grafico e inserito il codice nella pagina, qui in basso.
 
-
-{% highlight r %}
+```{r cars, echo=TRUE, fig.cap='Grafico a dispersione del dataset Cars', dev = "svglite"}
 par(mar = c(4, 4, .1, .1), bg = 'transparent')
 plot(cars, pch = 19, col = 'red', cex = .5)  #
-{% endhighlight %}
-
-![Grafico a dispersione del dataset Cars](/assets/figures/cars-1.svg)
+```
 
 Come formato di output di knitr ho impostato, come si può vedere, quello del markdown standard .Md. Tra poco sarà chiaro il perché.
 

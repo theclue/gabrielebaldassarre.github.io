@@ -7,3 +7,5 @@ R/.DS_Store
 .Rhistory
 cache/
 .RData
+assets/.DS_Store
+.DS_Store
