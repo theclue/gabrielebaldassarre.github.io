@@ -1,10 +1,12 @@
 ---
-title: "Approfondimento matematico sulla legge di potenza (power law)"
-excerpt: "La legge di potenza è uno dei costrutti matematici che ricoprono massima importanza in Social Network Analysis. In questo articolo ci doteremo di tutti gli strumenti teorici e metodologici per applicarla allo studio delle reti"
+title: "Approfondimento matematico: la power law"
+excerpt: La legge di potenza, o _power law_ è uno dei costrutti matematici che ricoprono massima
+  importanza in Social Network Analysis. In questo articolo ci doteremo di tutti gli
+  strumenti teorici e metodologici per applicarla allo studio delle reti
 header:
-  overlay_image: /assets/images/powerlaw-overlay.jpg
   overlay_filter: 0.5
-editor_options: 
+  overlay_image: /assets/images/powerlaw-overlay.jpg
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -65,7 +67,7 @@ Il grafico di destra, su scala logaritmica, è ancora una volta quello più inte
 
 In effetti, per eliminare il rumore si è reso necessario creare degli intervalli molto ampi e questo ha comportato una notevole perdita di informazioni. Per spiegare meglio il concetto: una volta aggregate le misurazioni all'interno di un bin, le abbiamo perse come entità distinte. E tanto più ampi sono gli intervalli, tante più sono le osservazioni che abbiamo aggregato insieme, e sulle quali non è più possibile affermare nulla singolarmente.
 
-In particolare, è sufficiente che \\( \alpha > 1 \\), cosa che praticamente avviene _sempre_, per far sì che un intervallo abbia meno campioni dell'intervallo immediatamente alla sua sinistra.
+In particolare, è sufficiente che \\( \alpha > 1 \\), cosa che avviene _sempre_, per far sì che un intervallo abbia meno campioni dell'intervallo immediatamente alla sua sinistra.
 
 Fortunatamente esiste un modo ancora migliore per rappresentare (e studiare) una power law e consiste nel rappresentarla mediante la __distribuzione di probabilità cumulativa__ (cumulative distribution function, o __CDF__).
 
@@ -86,12 +88,66 @@ Soprattutto,  essa è stata ottenuta _senza_ un binning, quindi senza perdita di
 
 ![plot of chunk mobydick.cdf](/assets/figures/mobydick.cdf-1.svg)
 
-##
+La CDF del campione è, come si può vedere, molto "pulita" e segue con notevole precisione l'andamento di una power law avente $$ \alpha = 1,93 $$ (retta in rosso).
 
-La CDF 
+## Determinare i parametri della power law
+
+Per quanto molto comune in natura, sono poche le grandezze che presentano un andamento che segue la legge di potenza nell'interezza dei valori della loro CDF; più spesso, si riscontrano distribuzioni che assimilano la legge di potenza sulla parte _destra_ del loro dominio (come nell'esempio sopra), mentre la parte sinistra segue un andamento diverso.
+
+Per questo motivo, è prassi abbastanza comune individuare il valore \\( x_{min} \\) al di sopra del quale la distribuzione, si verifica, segue in modo soddisfacente la legge di potenza, mentre per i valori al di sotto è opportuno individuare un modello che esprima con minore incertezza l'andamento della CDF, perché la _power law_ non modella adeguatamente la distribuzione; spesso, per questi valori bassi, migliori risultati si hanno con modelli di tipo esponenziale, log-normali o di Poisson. Nell'esempio di Moby Dick, per dire, ha senso applicare il modello _power law_ di cui sopra solo per $$ x_{min} \ge 26 $$
+
+La stima di \\( x_{min} \\) può essere fatta in modo visivo, dal grafico della CDF, oppure analiticamente, in modo da avere una stima statisticamente robusta e che, soprattutto, non richieda l'intervento diretto dell'osservatore per l'interpretazione.
+
+L'idea alla base è piuttosto semplice: scegliamo un valore \\( \hat{x} \\) tale che renda le distribuzioni di probabilità e la migliore _power law_ applicabile (con un dato \\( \alpha \\)) il più simile possibile per valori sopra \\( \hat{x} \\). Se il valore di \\( \hat x_{min} \\) è superiore del valore vero di \\( x_{min} \\), questo implica scartare un maggior numero di osservazioni (sotto \\( x_{min} \\)) e, quindi, ottenere, una distribuzione di probabilità più scadente, per via delle fluttuazioni statistiche. D'altra parte, se il valore di \\( \hat{x} \\) è inferiore al valore vero di \\( x_{min} \\), le distribuzioni di probabilità divergeranno per la sostanziale differenza tra i dati e il modello stesso. Il valore migliore di \\( x_{min} \\) giace all'interno di questo intervallo.
+
+La migliore misura per quantificare la distanza tra due distribuzioni di probabilità, per dati che palesemente non seguono la distribuzione nornale, è la statistica KS (o Kolmogorof-Smirnov), ovvero la massima distanza tra le CDF dei dati e il modello:
+
+$$ D = \max_{x \ge x_{min}} \left\lvert S(x) - P(x) \right\rvert $$
+
+con \\( S(x) \\) che rappresenta la CDF delle osservazioni per valori che siano almeno \\( x_{min} \\) e \\( P(x) \\) la CDF del modello _power law_ che rappresenta la miglior stima possibile. La stima \\( \hat{x} \\) di \\( x_{min} \\) è quella che minimizza \\( D \\).
+
+Una volta individuato un soddisfacente \\( x_{min} \\), è possibile stimare un adeguato \\( \alpha \\). Per farlo, l'approccio migliore è utilizzare il [metodo della massima verosmiglianza](https://it.wikipedia.org/wiki/Metodo_della_massima_verosimiglianza) (MLE), posto che vi sia un adeguato numero di osservazioni con \\( x \ge x_{min} \\). LA MLE per il caso continuo è la seguente (quella per il caso discreto è molto più complessa e non verrà trattata in questa sede):
+
+$$ \hat{\alpha} = 1 + n\left[\sum_{i=1}^n \ln\frac{x_i}{x_{min}}\right] \tag{MLE} $$ 
+
+Dove \\( \hat{\alpha} \\) è il valore stimato per \\( \alpha \\), normalmente non noto, individuato da una popolazione di \\( n \\) osservazioni \\( x_i \\) con \\( i = 1, 2, \dots, n \\), tutti tale che \\( x_i \ge x_{min} \\).
+
+Naturalmente, la robustezza di tali stimatori va anche essa valutata con un opportuno test per l'ipotesi, ma per essa vi chiedo di attendere il secondo articolo sull'argomento che ho in lavorazione, che riporterà degli esempi pratici in R e che toccherà anche questi temi ulteriori.
+
+## Esempi noti in letteratura
+
+Dai ricercatori, sono stati spesso studiati e citati dei campioni che esprimono un andamento della CDF come legge di potenza. Vediamo i più famosi:
+
+* __Frequenza delle parole nei testi__ - lo abbiamo visto con Moby Dick, ma il linguista [George Kingsley Zipf](https://en.wikipedia.org/wiki/George_Kingsley_Zipf) ha potuto verificare come questo accada in tutta la letteratura occidentale. La trattazione è riportata in [un suo elegante lavoro](https://www.amazon.it/Human-Behavior-Principle-Least-Effort/dp/161427312X) del 1949.
+
+* __Citazioni nelle pubblicazioni scientifiche__ - dimostrata da Derek J. de Solla Price in un [articolo su Science](http://garfield.library.upenn.edu/papers/pricenetworks1965.pdf) nel lontano 1965.
+
+* __Dimensione dei crateri da impatto sulla superficie lunare__ - la cui CDF segue una legge di potenza per numero di crateri di un certo diametro per chilometro quadrato, quindi è normalizzato sull'asse delle ordinate. Questo esempio è utile per comprendere che, spesso, una grandezza che non sembra seguire una legge di potenza, ne rivela invece l'andamento quando i dati subiscono una trasformazione o un cambio di sistema di riferimento.
+
+## Un esempio tutto nostro: i comuni italiani
+
+Per completare la trattazione, volevo brevemente studiare un campione che molto spesso, in letteratura, è stato assimilato ad una _power law_: la popolazione degli insediamenti umani in una data nazione.
 
 
 
+Così, per essere originale, ho ben pensato di studiare il dataset dei communi italiani, messo a disposizione dall'ISTAT a valle dell'ultimo censimento nazionale. Si tratta di un dataset di 7978 comuni italiani con una popolazione compresa tra 30 e 2873494 abitanti.
 
+Il valore del più piccolo comune d'Italia,  (30, si tratta del comune di Moncenisio, in provincia di Torino) mi ha fatto subito sospettare che la parte sinistra della distribuzione avesse un comportamento singolare (difficile pensare che ci siano più comuni di 30 abitanti rispetto agli altri) . Prima, però, di stimare un \\( x_{min} \\) per la CDF, mi sono chiesto se la distribuzione, una volta applicato il binning logaritmico, non potesse assumere una forma canonica. Così, dopo aver segmentato la popolazione in 100 intervalli ho ottenuto questo plot della densità e della percentuale di osservazioni.
 
+![plot of chunk italian.towns.plots](/assets/figures/italian.towns.plots-1.svg)
+
+Ebbene, questo grafico mi ha subito dato la sensazione di un andamento che segue una [distribuzione log-normale](https://it.wikipedia.org/wiki/Distribuzione_lognormale), con una leggera distonia sulla "coda" destra che può essere imputabile a un andamento secondo la legge di potenza.
+
+Il prossimo passo è stato, perciò, quello di individuare, attraverso il metodo di massima verosimiglianza spiegato sopra, due modelli, uno di tipo _power law_ e uno di tipo log-normale. L'ho fatto, naturalmente, sulla CDF e ho ottenuto il seguente:
+
+![plot of chunk italian.towns.cdf](/assets/figures/italian.towns.cdf-1.svg)
+
+Ebbene, come previsto il modello log-normale (in verde) riesce a descrivere il campione per gran parte del suo codominio (ha \\( x_{min_1} = 430\\), fino a \\( x_{min_2} = 99469\\), al di sopra del quale è la legge di potenza (in rosso) caratterizzata dal parametro \\( \alpha = 2,41 \\) a descrivere meglio la curva di distribuzione della CDF.
+
+Poiché, per ciò che avevamo ipotizzato sui dati, lo studio della funzione non è interessante per valori inferiori di \\( x_{min_1} \\), il _fitting_ si può arrestare qui. Ciò che bisognerebbe fare per terminare il lavoro è, come dicevamo, un opportuno test per verificare la robustezza degli stimatori, ma oggettivamente, nel caso specifico l'ispezione visiva dei grafici fornisce già, con discreto margine di sicurezza, le garanzie necessarie.
+
+## Per approfondire
+
+* M. E. J. Newman, [Power laws, Pareto distributions and Zipf’s law](https://arxiv.org/pdf/cond-mat/0412004.pdf), 2006;
+* Aaron Clauset, Cosma Rohilla Shalizi, M. E. J. Newman, [Power Laws Distributions in Empirical Data](https://arxiv.org/pdf/0706.1062.pdf), 2009
 
