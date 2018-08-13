@@ -86,8 +86,8 @@ D'altra parte, per ciò che concerne in nostri scopi, poter affermare che una re
 
 Per questo motivo, ora che sappiamo quali sono le sue caratteristiche, resta da capire come studiarla.
 
-## Individuare (e studiare) una distribuzione _power law_
-Innanzitutto una premessa, che facciamo riprendendo l'esempio di prima: dire che __la r-esima parola più ricorrente in Moby Dick viene usata n volte__è esattamente la stessa cosa di dire che __esistono r parole che occorrono con una frequenza pari almenoa n__ (per capirci, _r_ sta per _rank_).
+## Individuare una distribuzione _power law_
+Innanzitutto una premessa, che facciamo riprendendo l'esempio di prima: dire che __la r-esima parola più ricorrente in Moby Dick viene usata n volte__ è esattamente la stessa cosa di dire che __esistono r parole che occorrono con una frequenza pari almenoa n__ (per capirci, _r_ sta per _rank_).
 
 Intanto, questo ci consente di pensare alla legge di potenza come a una funzione di __distribuzione cumulativa di probabilità__, e questo è utile a prescindere.
 
@@ -186,8 +186,6 @@ Dai ricercatori, sono stati spesso studiati e citati dei campioni che esprimono 
 * __Frequenza delle parole nei testi__ - lo abbiamo visto con Moby Dick, ma il linguista [George Kingsley Zipf](https://en.wikipedia.org/wiki/George_Kingsley_Zipf) ha potuto verificare come questo accada in tutta la letteratura occidentale. La trattazione è riportata in [un suo elegante lavoro](https://www.amazon.it/Human-Behavior-Principle-Least-Effort/dp/161427312X) del 1949.
 
 * __Citazioni nelle pubblicazioni scientifiche__ - dimostrata da Derek J. de Solla Price in un [articolo su Science](http://garfield.library.upenn.edu/papers/pricenetworks1965.pdf) nel lontano 1965.
-
-* __Dimensione dei crateri da impatto sulla superficie lunare__ - la cui CDF segue una legge di potenza per numero di crateri di un certo diametro per chilometro quadrato, quindi è normalizzato sull'asse delle ordinate. Questo esempio è utile per comprendere che, spesso, una grandezza che non sembra seguire una legge di potenza, ne rivela invece l'andamento quando i dati subiscono una trasformazione o un cambio di sistema di riferimento.
 
 ## Un esempio tutto nostro: i comuni italiani
 
