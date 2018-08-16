@@ -9,7 +9,7 @@ header:
 editor_options:
   chunk_output_type: inline
 ---
-```{r setup, include = FALSE}
+```{r powerlaw.setup, include = FALSE, cache = FALSE}
 if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
 tryCatch({
   p_load("tidyverse", "poweRlaw")
@@ -192,7 +192,7 @@ Dai ricercatori, sono stati spesso studiati e citati dei campioni che esprimono 
 Per completare la trattazione, volevo brevemente studiare un campione che molto spesso, in letteratura, è stato assimilato ad una _power law_: la popolazione degli insediamenti umani in una data nazione.
 
 ```{r italian.towns}
-italian.towns <- read.csv2("..//R/data-sources/comuni_italiani.csv")
+italian.towns <- read.csv2("../R/data/ISTAT/comuni_italiani.csv")
 
 bins <- 100
 
