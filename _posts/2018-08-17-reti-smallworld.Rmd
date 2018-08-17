@@ -179,9 +179,9 @@ Rispetto al modello casuale in auge fino a quel momento (il cosiddetto [modello 
 
 Ma il suo più grande limite è quello di costruire strutture in cui tutti i nodi hanno lo stesso numero \\( k \\) di connessioni, ovvero presuppone che tutti i nodi abbiano la stessa popolarità (importanza, ecc.). Il modello Erdős-Renyi, per questa grandezza, prevede una più realistica distribuzione di Poisson.
 
-Come se non bastasse, nella realtà è facile accorgersi che nelle reti _small-world_ ci sono praticamente sempre dei nodi privilegiasti, chiamati _hub_, che catalizzano l'attenzione (sono più popolari, ecc.) e sono caratterizzati da un numero molto consistente di connessioni - molto più alto del valor medio. Per questi, anche la distribuzione di Poisson non è realistica.
+Come se non bastasse, nella realtà è facile accorgersi che nelle reti _small-world_ ci sono praticamente sempre dei nodi privilegiati, chiamati _hub_, che catalizzano l'attenzione (sono più popolari, ecc.) e sono caratterizzati da un numero molto consistente di connessioni - molto più alto del valor medio. Per questi, anche la distribuzione di Poisson non è realistica.
 
-In queste reti la [distribuzione del grado]({% post_url 2018-07-02-importanza-individui-rete-centralita %}) (_degree distribuzion_) è, piuttosto, assimilabile a una [legge di potenza]({% post_url 2018-08-12-legge-potenza-powerlaw %}). Modelli più recenti di descrizione delle reti, come il modello [Barabási–Albert](https://en.wikipedia.org/wiki/Barabási–Albert_model) tengono conto di questo comportamento asimmetrico dei nodi.
+In queste reti la [distribuzione del grado]({% post_url 2018-07-02-importanza-individui-rete-centralita %}) (_degree distribution_) è, piuttosto, assimilabile a una [legge di potenza]({% post_url 2018-08-12-legge-potenza-powerlaw %}). Modelli più recenti di descrizione delle reti, come il modello [Barabási–Albert](https://en.wikipedia.org/wiki/Barabási–Albert_model) tengono conto di questo comportamento asimmetrico dei nodi.
 
 D'altra parte, né il modello Erdős-Renyi né il modello Barabási–Albert simulano correttamente, al contrario del modello Watts-Strogatz, la coesione locale. Nessuno di essi, in definitiva, può considerarsi un modello reliastico per descrivere la struttura di una rete sociale, ma solo una approssimazione.
 
