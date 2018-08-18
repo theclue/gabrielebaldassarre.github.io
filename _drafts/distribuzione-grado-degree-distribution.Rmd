@@ -1,0 +1,31 @@
+---
+title: "Radiografia di una rete: il grado (degree distribution)"
+excerpt: Lorem ipsum dolor sic amet
+header:
+  overlay_filter: 0.5
+  overlay_image: /assets/images/degree-distribution-overlay.jpg
+editor_options:
+  chunk_output_type: inline
+---
+```{r smallworld.setup, include = FALSE, cache = FALSE}
+if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
+tryCatch({
+  p_load("tidyverse", "igraph")
+}, warning=function(w){
+  stop(conditionMessage(w))
+})
+
+old.par <- par()
+
+par(mar=c(4, 4, 2, 1),
+    mgp=c(3, 0.4, 0),
+    tck=-.01,
+    oma=c(0,1,2,0),
+    cex.axis=0.9,
+    las=1)
+
+#Set here parameters for consistency
+vertex.color <- "darkblue"
+vertex.size = 9
+
+```
