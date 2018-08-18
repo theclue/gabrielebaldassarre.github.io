@@ -37,6 +37,8 @@ In altri termini, la progressione matematica parte dal presupposto che ognuna de
 
 Ma gli esseri umani non hanno tutte queste libertà, perché sono soggetti a tanti vincoli,  sociali, geografici, di età di razza, ecc. che riducono di moltissimo le possibilità di scelta nella creazione della loro rete sociale. Che non sarà più casuale, ma imposta in modo tale da facilitare la creazione di sottogruppi _per prossimità_.
 
+{% include figure image_path="/assets/images/girl-cricket-synronicity.jpg" alt="Un piccolo, simpatico grillo" caption="La scienza, certe volte, compie dei percorsi strani. Duncan Watts arrivò, con il suo relatore di dottorato Steven Strogatz, a formulare un credibile modello di reti sociali umane partendo dallo studio...dei grilli!" %}
+
 Nel mondo reale, in effetti, i nostri amici si conoscono, molto probabilmente, anche tra di loro; un individuo che è parte della nostra cerchia non porterà 250 nuovi individui all'interno del gruppo, ma molti di meno, in quanto gran parte di quei 250 sono già componenti del gruppo stesso.
 
 Attenzione: una parte, non tutti.
