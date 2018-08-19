@@ -283,7 +283,9 @@ defaults:
     values:
       layout: single
       author_profile: true
+      toc_label: "Indice"
+      toc_sticky: true
   - scope:
       path: '/assets/*.js'
     values:
-      sitemap: true
+      sitemap: false

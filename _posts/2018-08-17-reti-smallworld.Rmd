@@ -4,6 +4,7 @@ excerpt: In questo articolo introdurremo concettualmente le reti _small-world_ e
 header:
   overlay_filter: 0.5
   overlay_image: /assets/images/small-world-overlay.jpg
+  teaser: /assets/images/small-world-teaser.jpg
 editor_options:
   chunk_output_type: inline
 ---
