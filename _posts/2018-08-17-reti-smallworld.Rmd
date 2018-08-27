@@ -131,6 +131,15 @@ ring.network <- sample_smallworld(1, 20, 2, 0)
 
 l <- layout_in_circle(ring.network)
 
+l.df <- as.data.frame(l)
+colnames(l.df) <- c("x", "y")
+
+l.polar <- cart2pol(l.df$x, l.df$y) %>% 
+  mutate(r = ifelse(row_number() %% 2 == 1, r - .1, r))
+
+l <- as.matrix(pol2cart(l.polar$r, l.polar$theta) %>% select(x, y))
+  
+
 smallworld.network <- sample_smallworld(1, 20, 2, 0.1)
 smallworld.network.2 <- sample_smallworld(1, 20, 2, 0.3)
 random.network <- sample_smallworld(1, 20, 2, 1)
@@ -138,7 +147,9 @@ random.network <- sample_smallworld(1, 20, 2, 1)
 plot(ring.network,
      vertex.size = vertex.size,
      vertex.color = vertex.color,
-     vertex.label = NA)
+     vertex.label = NA,
+     layout = l,
+     edge.curved = .1)
 mtext("p = 0", side = 1, line = 0, cex = 1.2)
 title(main="Rete Regolare", cex.main = 1.5)
 
@@ -146,7 +157,8 @@ plot(smallworld.network,
      vertex.size = vertex.size,
      vertex.color = vertex.color,
      vertex.label = NA,
-     layout = l)
+     layout = l,
+     edge.curved = .1)
 mtext("p = 0.1", side = 1, line = 0, cex = 1.2)
 title(main="Rete Riconnessa 1", cex.main = 1.5)
 
@@ -154,7 +166,8 @@ plot(smallworld.network.2,
      vertex.size = vertex.size,
      vertex.color = vertex.color,
      vertex.label = NA,
-     layout = l)
+     layout = l,
+     edge.curved = .1)
 mtext("p = 0.3", side = 1, line = 0, cex = 1.2)
 title(main="Rete Riconnessa 2", cex.main = 1.5)
 
@@ -162,7 +175,8 @@ plot(random.network,
      vertex.size = vertex.size,
      vertex.color = vertex.color,
      vertex.label = NA,
-     layout = l)
+     layout = l,
+     edge.curved = .1)
 mtext("p = 1", side = 1, line = 0, cex = 1.2)
 title(main="Rete Casuale", cex.main = 1.5)
 
