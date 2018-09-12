@@ -1,9 +1,10 @@
 ---
 title: "Quanto grande è il mondo di Harry Potter?"
-excerpt: "E' possibile applicare la Social Network Analysis alle opere di fantasia? In questo esercizio di analisi che coinvolge il famoso mago dalla cicatrice a saetta cerchiamo di dare una risposta alla domanda: qualcosa di interessante ne verrà sicuramente fuori."
+excerpt: "È possibile applicare la Social Network Analysis alle opere di fantasia? In questo esercizio di analisi che coinvolge il famoso mago dalla cicatrice a saetta cerchiamo di dare una risposta alla domanda: qualcosa di interessante ne verrà sicuramente fuori."
 header:
   overlay_image: /assets/images/harry-potter-philosophers-overlay.png
-  overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
+  teaser: /assets/images/harry-potter-philosophers-teaser.jpg
+  overlay_filter: 0.5
 graph_kcores: "graphs/harrypotter-kcores.html"
 graph_houses: "graphs/harrypotter-houses.html"
 ---

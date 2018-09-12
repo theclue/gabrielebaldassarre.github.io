@@ -1,0 +1,59 @@
+---
+title: "Le reti small-world: analisi quantitativa"
+excerpt: Lorem ipsum dolor sic amet
+header:
+  overlay_filter: 0.5
+  overlay_image: /assets/images/small-world-overlay.jpg
+editor_options:
+  chunk_output_type: inline
+---
+```{r smallworld.setup, include = FALSE, cache = FALSE}
+if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
+tryCatch({
+  p_load("tidyverse", "igraph")
+}, warning=function(w){
+  stop(conditionMessage(w))
+})
+
+old.par <- par()
+
+par(mar=c(4, 4, 2, 1),
+    mgp=c(3, 0.4, 0),
+    tck=-.01,
+    oma=c(0,1,2,0),
+    cex.axis=0.9,
+    las=1)
+
+#Set here parameters for consistency
+vertex.color <- "darkblue"
+vertex.size = 9
+
+```
+
+```{r watts-strogatz.stats, warning = FALSE, fig.asp = .6}
+
+par(mfrow=c(1,1))
+
+set.seed(12)
+avg.stat <- function(nei, p) {
+  result <- replicate(1000, {
+    wsg <- watts.strogatz.game(1, 100, nei, p)
+    c(average.path.length(wsg),
+      transitivity(wsg))
+  })
+  apply(result, 1, quantile, probs = c(0.5, 0.05, 0.95))
+}
+nei <- 6
+p <- 2 ^ -seq(0, 10, len = 21)
+result <- sapply(p, avg.stat, nei = nei)
+result <- t(result / rep(avg.stat(nei, 0)[1,], each = 3))
+par(mar=c(3.2, 2, 0.2, 0.2), mgp=c(2, 1, 0))
+matplot(p, result, type = "l", log = "x", xaxt = "n", ylab = "",
+        lty = rep(c(1,2,2),2), col=rep(c(1,2), each=3))
+axis(1, at = 2 ^ -(0:10),
+     labels =  c(1, parse(text = paste(2, 1:10, sep = "^-",
+                                       collapse = ";"))))
+legend("bottomleft", c("Lunghezza media percorsi", "Coefficiente di clustering"),
+       lty = 1, col = c(1, 2))
+
+```

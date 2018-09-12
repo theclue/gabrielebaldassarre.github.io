@@ -1,4 +1,40 @@
 ---
-layout: home
-author_profile: true
+layout: splash
+permalink: /
+title: "Social Network Analysis"
+header:
+  overlay_filter: 0.5
+  overlay_image: /assets/images/home-overlay.jpg
+  cta_label: "<i class='fas fa-book-reader'></i> Tutti gli Articoli"
+  cta_url: "/archivio-anno/"
+  caption:
+excerpt: "In un unico sito, tutta la mia attività di ricerca, di approfondimento, di sviluppo e di divulgazione sul mondo dell'analisi delle reti sociali."
+intro:
+  - excerpt: 'Resta aggiornato sui nuovi articoli &nbsp; [<i class="fab fa-linkedin"></i> Gabriele Baldassarre](https://www.linkedin.com/in/gabrielebaldassarre/detail/recent-activity/){: .btn .btn--linkedin}'
+  
+feature_row:
+  - image_path: /assets/images/small-world-teaser.jpg
+    alt: "Introduzione alle reti small-world"
+    title: "Articoli Introduttivi"
+    excerpt: "Le reti _small-world_ e le loro caratteristiche; dai _sei gradi di separazione_ alla _coesione locale_, una introduzione intuitiva per chi non ne sa ancora nulla."
+    url: "/reti-smallworld"
+    btn_label: "Articolo Completo"
+    btn_class: "btn--info"
+  - image_path: /assets/images/powerlaw-teaser.jpg
+    alt: "I segreti della legge di potenza"
+    title: "Approfondimenti"
+    excerpt: "La legge di potenza, o _power law_ ricopre massima importanza in Social Network Analysis. Ne discutiamo qui per applicarla allo studio delle reti."
+    url: "/legge-potenza.powerlaw"
+    btn_label: "Articolo Completo"
+    btn_class: "btn--info"
+  - image_path: /assets/images/harry-potter-philosophers-teaser.jpg
+    title: "Casi di Studio"
+    excerpt: "Può la Social Network Analysis essere applicata alla _fiction_? In questo articolo, dedicato alla saga di Harry Potter dimostreremo di sì."
+    url: "/quanto-grande-mondo-harry-potter"
+    btn_label: "Articolo Completo"
+    btn_class: "btn--info"
 ---
+
+{% include feature_row id="intro" type="center" %}
+
+{% include feature_row  %}

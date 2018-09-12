@@ -2,7 +2,5 @@
 main:
   - title: "Chi Sono"
     url: /chi-sono/
-  - title: "Come funziona questo blog"
-    url: /blog-architettura-contenuti-piattaforma/
   - title: "Archivio Articoli"
     url: /archivio-anno/
