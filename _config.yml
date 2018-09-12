@@ -77,9 +77,9 @@ naver_site_verification  :
 
 # Social Sharing
 twitter:
-  username               : "cerealping"
+  username               : "bashebiscotti"
 facebook:
-  username               : "cerealping"
+  username               : "bashebiscotti"
   app_id                 : 460740091056431
   publisher              :
 og_image                 : "/assets/images/gabriele-baldassarre.png"
@@ -89,8 +89,8 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links:
-    - "https://twitter.com/cerealping"
-    - "https://facebook.com/cerealping"
+    - "https://twitter.com/bashebiscotti"
+    - "https://facebook.com/bashebiscotti"
     - "https://www.linkedin.com/in/gabrielebaldassarre"
 
 # Analytics
@@ -127,7 +127,7 @@ author:
   stackoverflow    : # "696436/gabriele-b"
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
   tumblr           :
-  twitter          : "cerealping"
+  twitter          : "bashebiscotti"
   vine             :
   weibo            :
   xing             :
