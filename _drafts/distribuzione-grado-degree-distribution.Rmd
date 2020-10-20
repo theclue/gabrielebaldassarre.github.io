@@ -30,14 +30,14 @@ vertex.color <- "darkblue"
 vertex.size = 9
 
 ```
-Una rete sociale è un _sistema complesso_ perché le informazioni che fornisce sono sia relative ai suoi individui (i _nodi_ della rete) sia alle eventuali relazioni presenti tra coppie di essi (le _connessioni_) che, nel loro insieme, ne definiscono la struttura. Così come, insomma, di un nodo disponiamo di tutta una serie di attributi, ad esempio, demografici (sesso, razza, età...) che lo collocano in uno specifico segmento di individui, grazie alla struttura della rete stessa e una serie di misure, come quelle della [centralità]({% post_url 2018-07-02-importanza-individui-rete-centralita %}), possiamo misurarne il ruolo, il prestigio, l'importanza, ecc.
+Una rete sociale è un _sistema complesso_ perché le informazioni che fornisce sono sia relative ai suoi individui (i _nodi_ della rete) sia alle eventuali relazioni presenti tra coppie di essi (le _connessioni_) che, nel loro insieme, ne definiscono la struttura. Così come, insomma, di un nodo disponiamo di tutta una serie di attributi, ad esempio, demografici (sesso, razza, età...) che lo collocano in uno specifico segmento di individui, grazie alla struttura della rete stessa e una serie di misure, come quelle della [centralità]({% post_url SNA/2018-07-02-importanza-individui-rete-centralita %}), possiamo misurarne il ruolo, il prestigio, l'importanza, ecc.
 
 Tra le misure derivate dalla struttura della rete, un ruolo importantissimo ricopre il __grado__ (_degree_), ovvero il numero di connessioni possedute da ciascuno dei nodi della rete. Nella sua accezione più semplice è un numero intero maggiore di zero che non tiene conto del "peso" delle relazioni né del "verso" delle stesse (reti __non direzionate__, in cui le connessioni hanno un senso _da-a_). In caso di reti __direzionate__, invece, la grandezza si sdoppia in due complementari:
 
 * La __in-degree__, che misura il numero di connessioni __entranti__ in un nodo;
 * La __out-degree__, che misura il numero di connessioni __uscenti__ da un nodo.
 
-A titolo di esempio, quella qui sotto è una rete non direzionata di tipo [small-world]({% post_url 2018-08-17-reti-smallworld %}), generata casualmente; l'etichetta sotto ognuno dei nodi rappresenta, appunto, il _grado_.
+A titolo di esempio, quella qui sotto è una rete non direzionata di tipo [small-world]({% post_url generated/2018-08-17-reti-smallworld %}), generata casualmente; l'etichetta sotto ognuno dei nodi rappresenta, appunto, il _grado_.
 
 ```{r smallworld-degree, warning = FALSE, fig.asp = .5}
 
@@ -60,7 +60,7 @@ title(main="Rete non Direzionata - Degree", cex.main = 1.5)
 
 ```
 
-```{r smallworld-degree, warning = FALSE, fig.asp = .5}
+```{r smallworld-degree-directed, warning = FALSE, fig.asp = .5}
 
 nodes.num <- 40
 

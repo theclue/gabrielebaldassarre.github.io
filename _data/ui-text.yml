@@ -18,6 +18,7 @@ en: &DEFAULT_EN
   tags_label                 : "Tags:"
   categories_label           : "Categories:"
   date_label                 : "Updated:"
+  original_date_label        : "Published"
   comments_label             : "Leave a Comment"
   comments_title             : "Comments"
   more_label                 : "Learn More"
@@ -55,6 +56,10 @@ en-AU:
 # Italian
 # -------
 it: &DEFAULT_IT
+  search_label_text          :
+  search_placeholder_text    : "Inserisci termini di ricerca..."
+  results_found              : "Risultati"
+  back_to_top                : "Vai su"
   page                       : "Pagina"
   pagination_previous        : "Precedente"
   pagination_next            : "Prossima"
@@ -64,12 +69,13 @@ it: &DEFAULT_IT
   toc_label                  : "Indice della pagina"
   ext_link_label             : "Link"
   less_than                  : "meno di"
-  minute_read                : "minuto/i di lettura"
+  minute_read                : "minuti di lettura"
   share_on_label             : "Condividi"
   meta_label                 :
   tags_label                 : "Tags:"
   categories_label           : "Categorie:"
   date_label                 : "Aggiornato:"
+  original_date_label        : "Pubblicato:"
   comments_label             : "Scrivi un commento"
   comments_title             : "Commenti"
   more_label                 : "Scopri di più"
@@ -77,7 +83,7 @@ it: &DEFAULT_IT
   follow_label               : "Segui:"
   feed_label                 : "Feed"
   powered_by                 : "Powered by"
-  website_label              : "Website"
+  website_label              : "Sito web"
   email_label                : "Email"
   recent_posts               : "Articoli recenti"
   undefined_wpm              : "Parametro words_per_minute non definito in _config.yml"
@@ -92,5 +98,9 @@ it: &DEFAULT_IT
   comment_success_msg        : "Grazie per il tuo commento! Verrà visualizzato nel sito una volta che sarà approvato."
   comment_error_msg          : "C'è stato un errore con il tuo invio. Assicurati che tutti i campi richiesti siano stati completati e riprova."
   loading_label              : "Caricamento..."
+  search_label_text          : "Ricerca"
+  search_placeholder_text    : "Inserisci termini di ricerca..."
+  results_found              : "Risultati"
+  back_to_top                : "Vai su"
 it-IT:
   <<: *DEFAULT_IT

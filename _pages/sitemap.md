@@ -1,8 +1,10 @@
 ---
 layout: archive
-title: "Sitemap"
+title: "Mappa del Sito"
 permalink: /sitemap/
 author_profile: false
+sitemap:
+  exclude: 'yes'
 ---
 
 <h2>Pagine</h2>

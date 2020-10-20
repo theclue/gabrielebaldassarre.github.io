@@ -11,6 +11,7 @@ local({
   
   library(svglite)
   library(knitr)
+  library(rprojroot)
   
   knitr::opts_chunk$set(tidy=FALSE,
                         warning=FALSE,
@@ -35,9 +36,12 @@ local({
    
      }
    })
-  
+
   knit(
-    a[1], a[2], quiet = FALSE, encoding = "UTF-8",
+    input = a[1],
+    output = a[2],
+    quiet = FALSE,
+    encoding = "UTF-8",
     envir = globalenv()
   )
 })

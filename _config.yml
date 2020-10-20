@@ -10,22 +10,23 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
+theme                    : minimal-mistakes-jekyll
 remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "it"
-title                    : "Gabriele Baldassarre | Social Network Analysis"
+locale                   : it-IT
+lang                     : it_IT
+title                    : "Gabriele Baldassarre"
 title_separator          : "|"
 name                     : "Gabriele Baldassarre"
-description              : "Il blog italiano sulla Social Network Analysis: teoria, tecniche e applicazioni pratiche."
+description              : "Pochi grassi e ingredienti rigorosamente POSIX standard"
 url                      : "https://gabrielebaldassarre.com"
 baseurl                  : "/"
 repository               : "theclue/gabrielebaldassarre.com"
 teaser                   : "/assets/images/default-post-teaser.png"
 breadcrumbs              : false
-words_per_minute         : 200
+words_per_minute         : 150
 comments:
   provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2" "custom"
   disqus:
@@ -90,59 +91,43 @@ social:
   name                   : # If the user or organization name differs from the site's name
   links:
     - "https://twitter.com/bashebiscotti"
-    - "https://facebook.com/bashebiscotti"
     - "https://www.linkedin.com/in/gabrielebaldassarre"
 
 # Analytics
 analytics:
-  provider: "google-gtag"
+  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
-    tracking_id: "GTM-WH4NHF"
-
+    tracking_id          : "GTM-WH4NHF"
+    anonymize_ip         : # true, false (default)
 
 # Site Author
 author:
   name             : "Gabriele Baldassarre"
   avatar           : "/assets/images/gabriele-baldassarre.png"
-  bio              : "Head of Analytics in MRM//McCann, co-founder di 9thCircle Games, data scientist. Resto alzato fino a tardi."
+  bio              : "Metti un _maker_ a parlare di Fisica, Social Network Analysis, Informatica e Quantum Computing e questo è il risultato."
   location         : "Milano, Italia"
   email            :
-  uri              :
-  home             : # null (default), "absolute or relative url to link to author home"
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "theclue"
-  gitlab           :
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         :  "gabrielebaldassarre"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # "696436/gabriele-b"
-  steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
-  tumblr           :
-  twitter          : "bashebiscotti"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          : # "https://youtube.com/c/MichaelRoseDesign"
-
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/theclue"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/gabrielebaldassarre"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/bashebiscotti"
+    - label: "Goodreads"
+      icon: "fab fa-fw fa-goodreads"
+      url: "https://goodreads.com/theclue"
 
 # Reading Files
 include:
   - .htaccess
   - _pages
 exclude:
-  - "*.Rmd"
   - "*.sublime-project"
   - "*.sublime-workspace"
-  - cache
   - vendor
   - .asset-cache
   - .bundle
@@ -161,18 +146,30 @@ exclude:
   - log
   - node_modules
   - package.json
+  - package-lock.json
   - Rakefile
   - README
   - tmp
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
   - R
+  - ".rvmrc"
+  - ".rbenv-version"
+  - "README.md"
+  - ".gitlab-ci.yml"
+  - "Dockerfile"
+  - "default.conf"
+  - helm
+  - .Rproj.user
+  - containers
+  - Makefile
+  - bin
+
 keep_files:
   - .git
   - .svn
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-
 
 # Conversion
 markdown: kramdown
@@ -212,17 +209,28 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
-  - jekyll-feed
   - jemoji
+  - jekyll-mentions
+  - jekyll-redirect-from
+  - liquid_pluralize
+  - liquid_reading_time
+  - jekyll-figure
+  - jekyll-archives
+  - jekyll-feed
   - jekyll-include-cache
+  - kramdown-parser-gfm 
 
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate
-#  - jekyll-sitemap
   - jekyll-gist
-  - jekyll-feed
   - jemoji
+  - jekyll-figure
+  - jekyll-redirect-from
+  - liquid_pluralize
+  - liquid_reading_time
+  - jekyll-feed
+  - jekyll-include-cache
 
 
 # Archives
@@ -237,10 +245,10 @@ whitelist:
 #  - <base_path/my-awesome-category/index.html ~> path: /
 category_archive:
   type: liquid
-  path: /categories/
+  path: /categorie/
 tag_archive:
   type: liquid
-  path: /tags/
+  path: /tag/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
@@ -253,6 +261,8 @@ tag_archive:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
+jekyll-figure:
+  paragraphs: false
 
 # HTML Compression
 # - http://jch.penibelst.de/
@@ -261,6 +271,14 @@ compress_html:
   ignore:
     envs: development
 
+# scripts
+head_scripts:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
+  - /assets/htmlwidgets-1.2/htmlwidgets.js
+  - /assets/vis-4.20.1/vis.min.js
+  - /assets/visNetwork-binding-2.0.4/visNetwork.js
+after_footer_scripts:
+  - //s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d790b1b248d9eaf
 
 # Defaults
 defaults:
@@ -273,7 +291,7 @@ defaults:
       author_profile: true
       read_time: true
       share: true
-      related: false
+      related: true
       toc: true
       toc_label: "Indice"
       toc_sticky: true
@@ -284,8 +302,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+      read_time: false
+      toc: false
       toc_label: "Indice"
       toc_sticky: true
+      related: false
   - scope:
       path: '/assets/*.js'
     values:

@@ -1,9 +1,30 @@
 source "https://rubygems.org"
 group :jekyll_plugins do
-  gem "github-pages"
-  gem "jekyll-feed"
-  gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
-  gem "jekyll-paginate"
-  gem "jekyll-algolia"
+  gem 'jekyll'
+  gem 'minimal-mistakes-jekyll'
+  gem 'activesupport'
+  gem 'jekyll-default-layout'
+  gem 'jekyll-feed'
+  gem 'jekyll-optional-front-matter'
+  gem 'jekyll-relative-links'
+  gem 'jekyll-sass-converter'
+  gem 'jekyll-include-cache'
+  gem 'kramdown'
+  gem 'liquid'
+  gem 'listen'
+  gem 'nokogiri'
+  gem 'rouge'
+  gem 'rb-inotify'
+  gem 'jekyll-redirect-from'
+  gem 'jemoji'
+  gem 'jekyll-mentions'
+  gem 'liquid_pluralize'
+  gem 'liquid_reading_time'
+  gem 'jekyll-sitemap'
+  gem 'jekyll-paginate'
+  gem 'jekyll-algolia'
+  gem 'jekyll-gist'
+  gem 'jekyll-figure'
+  gem 'jekyll-archives'
+  gem 'kramdown-parser-gfm'
 end

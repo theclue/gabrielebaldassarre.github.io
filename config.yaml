@@ -1,0 +1,4 @@
+baseurl: "https://gabrielebaldassarre.com"
+languageCode: "it-IT"
+title: "Gabriele Baldassarre"
+ignoreFiles: ["\\.Rmd$", "_files$", "_cache$"]

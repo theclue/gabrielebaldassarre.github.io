@@ -1,6 +1,8 @@
 # main links links
 main:
+  - title: "Social Network Analysis"
+    url: /sna
+  - title: "Meccanica Quantistica"
+    url: /meccanica-quantistica
   - title: "Chi Sono"
-    url: /chi-sono/
-  - title: "Archivio Articoli"
-    url: /archivio-anno/
+    url: /chi-sono
