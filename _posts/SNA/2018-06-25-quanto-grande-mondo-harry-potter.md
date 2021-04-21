@@ -22,9 +22,9 @@ Il testo  utilizzato per l'analisi è la versione ePub in lingua inglese, acquis
 
 Il primo volume della serie ha più che altro lo scopo di introdurre i personaggi e delinearne i ruoli (l'eroe, il supporto, l'antagonista, [eccetera](https://it.wikipedia.org/wiki/Narratologia)); introduce i personaggi che gravitano attorno alla Scuola di Magia e di Stregoneria di Hogwarts, ma non ne approfondisce le relazioni. Questo non è un problema: ciò che ci interessa, in effetti, non è l'importanza narrativa degli attori, ma le loro _conversazioni_; solo se i personaggi sono stati coinvolti almeno in una conversazione, infatti, questi potranno dire di avere una reciproca relazione sociale.
 
-{% figure caption:"Top 15 Personaggi e loro linee di dialogo, in ordine decrescente. Harry è molto presente sin da subito e rivaleggia con Hermione, che arriverà più tardi con la sua proverbiale logorrea." %}
+Qui sotto la Top 15 dei Personaggi e loro linee di dialogo, in ordine decrescente. Harry è molto presente sin da subito e rivaleggia con Hermione, che arriverà più tardi con la sua proverbiale logorrea.
+
 ![Timeline delle conversazioni dei 15 personaggi principali in Harry Potter e la Pietra Filosofale](/assets/images/harry-potter-philosophers-timeline.png)
-{% endfigure %}
 
 Dalla lettura delle sequenze dei dialoghi, vediamo immediatamente che il libro si concentra attorno alle vicende del protagonista, Harry; egli è, infatti, presente in quasi tutte le conversazioni. La rete, c'è da aspettarsi, avrà spiccate caratteristiche di una ego-network, forse sarà addirittura una rete (quasi) a stella. Non c'è da stupirsi: tutta la storia si svolge attorno a Harry e tutte le reti sociali espresse hanno nel giovane mago se non il destinatario naturale, almeno uno spettatore privilegiato.
 
@@ -46,9 +46,10 @@ I colori dei nodi individuano i gruppi di affiliazione, ma anche community dai c
 
 Ma possiamo dire qualcosa di più sui ruoli, adesso?
 
-{% figure caption:"Albus Silente, Dumbledore nel testo originale, è molto importante nella storia, ma non è poi così influente, stando alla sua posizione nella rete." %}
+Albus Silente, Dumbledore nel testo originale, è molto importante nella storia, ma non è poi così influente, stando alla sua posizione nella rete.
+
 ![Albus Silente nel primo film della saga](/assets/images/albus-dumbledore.jpg)
-{% endfigure %}
+
 
 ## Ron Weasley, l'eterno secondo...
 
@@ -93,8 +94,6 @@ E' Hagrid, in definitiva, la vera "spalla" di Harry - in termini di relazioni so
 
 Niente male per un guardacaccia, no?
 
-{% figure caption:"Povero Ron...nella trama del romanzo è l'eterno secondo. Mentre nella topologia della rete è addirittura terzo!" %}
 ![Ron Weasley, come compare nel primo film](/assets/images/ron-weasley.jpg)
-{% endfigure %}
 
-Se siete interessati a come ho costruito la rete a partire da un ebook, vi invito a dare una occhiata al [codice sorgente](https://github.com/theclue/tableau-showcase/tree/master/data-raw/harry.potter.sna), ampiamente commentato, disponibile su Github. Codice che sarà, io spero, comunque oggetto di un futuro articolo.
+Povero Ron...nella trama del romanzo è l'eterno secondo. Mentre nella topologia della rete è addirittura terzo!

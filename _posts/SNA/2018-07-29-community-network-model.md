@@ -15,9 +15,9 @@ Sfortunatamente per gli hippie e per i fisici, però, il XXI Secolo si è aperto
 
 Ma prima di parlare di questo modello più evoluto, vediamo innanzitutto brevemente come si è chiuso il XX Secolo in casa dei sociologi.
 
-{% figure caption:"Stanley Milgram, lo psicologo statunitense che, nell'ambito dell'arcinoto esperimento, nel 1967 spedì lettere in giro per tutti gli Stati Uniti e dimostrò che viviamo in un mondo piccolo. Non tutti sanno, però, che prima di lui l'esistenza dello _Small-World effect_ era stata speculata dallo scrittore ungherese [Frigyers Karinthy](http://www.eastjournal.net/archives/74471) mentre [Ithiel de Sola Pool](https://en.wikipedia.org/wiki/Ithiel_de_Sola_Pool) e Manfred Kochen colmarono, nel 1978 e con un rigoroso  modello matematico, le lacune dell'illustre, e discusso, predecessore (foto: [Psychology Unlocked](http://www.psychologyunlocked.com/stanley-milgram/))." %}
+Stanley Milgram, lo psicologo statunitense che, nell'ambito dell'arcinoto esperimento, nel 1967 spedì lettere in giro per tutti gli Stati Uniti e dimostrò che viviamo in un mondo piccolo. Non tutti sanno, però, che prima di lui l'esistenza dello _Small-World effect_ era stata speculata dallo scrittore ungherese [Frigyers Karinthy](http://www.eastjournal.net/archives/74471) mentre [Ithiel de Sola Pool](https://en.wikipedia.org/wiki/Ithiel_de_Sola_Pool) e Manfred Kochen colmarono, nel 1978 e con un rigoroso  modello matematico, le lacune dell'illustre, e discusso, predecessore (foto: [Psychology Unlocked](http://www.psychologyunlocked.com/stanley-milgram/)).
+
 ![Stanley Milgram](/assets/images/stanley-milgram.jpg)
-{% endfigure %}
 
 ## Cosa si sapeva già: le tre caratteristiche di una rete sociale
 
@@ -37,9 +37,10 @@ Così come il DNA è costruito da una sequenza di quattro basi elementari (adeni
 
 Il motivo per cui l'elemento più atomico di organizzazione delle comunità sociali sia il triangolo è ancora oggetto di studi e non vi ci addentreremo in questa sete. Fatto sta, che, come una catena di DNA è descritta da una lunga sequenza di basi, una rete sociale può essere descritta da una lunga _sequenza di triangoli_. Questi triangoli prendono il nome di _triadi_ o, più spesso, di __clique__ (in italiano orribilmente traducibile con 'cricca'). E queste _clique_ non sono, tipicamente, oggetti statici; le relazioni evolvono nel tempo e la struttura della rete con esso. Con essa, quindi, cambiano le clique.
 
-{% figure caption:"Una serie di clique, o triadi. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. Tra questi esempi, l'unica caratterizzata da una certa instabilità è quella di sinistra che non a caso prende il nome di _triade proibita (forbidden triad)_: la probabilità che evolva, presto o tardi, in una delle due configurazioni più a destra è molto alta." %}
+Una serie di clique, o triadi. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. Tra questi esempi, l'unica caratterizzata da una certa instabilità è quella di sinistra che non a caso prende il nome di _triade proibita (forbidden triad)_: la probabilità che evolva, presto o tardi, in una delle due configurazioni più a destra è molto alta.
+
 ![Triadi in equilibrio e proibite](/assets/images/triadi.svg)
-{% endfigure %}
+
 
 Il motivo per cui avviene questa "risoluzione" della clique ha cause fisiche: minimizzazione dell'energia. Troppo dispendiosa di energie, infatti, è la situazione del nodo _A_, costretto a mantenere due canali segregati con _C_ e _B_ in una situazione di perenne stress sociale. Molto più facile risolverla facendo sì che i due nodi non connessi tra di loro entrino in contatto oppure interrompendo la relazione con uno dei due vicini (_C_, in questo caso).
 

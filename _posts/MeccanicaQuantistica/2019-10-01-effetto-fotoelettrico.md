@@ -65,6 +65,6 @@ Questo fenomeno, condermato sperimentalmente, contraddice apertamente quanto pre
 
 Questa diretta conseguenza della quantizzazione dell'energia, per cui fotoni ed elettroni interagiscono uno per uno, portò  Einstein a vincere il suo unico premio Nobel nel 1921.
 
-{% figure caption:"Ironicamente, il grande fisico tedesco non vinse mai l'ambito premio per il lavoro che lo avrebbe consegnato alla storia, quello sulla Relatività Generale, ma solo per questo suo contributo che, di fatto, diede il via alla meccanica quantistica. Una teoria per alcuni aspetti della quale egli nutrì molte riserve, per non dire profonda avversione, durante tutta la sua vita." %}
 ![Albert Einstein nel 1915](/assets/images/einstein.jpg)
-{% endfigure %}
+
+Ironicamente, il grande fisico tedesco non vinse mai l'ambito premio per il lavoro che lo avrebbe consegnato alla storia, quello sulla Relatività Generale, ma solo per questo suo contributo che, di fatto, diede il via alla meccanica quantistica. Una teoria per alcuni aspetti della quale egli nutrì molte riserve, per non dire profonda avversione, durante tutta la sua vita.

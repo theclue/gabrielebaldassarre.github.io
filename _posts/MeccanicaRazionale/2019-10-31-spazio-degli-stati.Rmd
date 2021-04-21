@@ -61,9 +61,11 @@ $$ \ddot{\theta} = -\frac{g}{l}sin\theta $$
 
 Nell'immagine in basso, possiamo vedere i vari stati che assume il pendolo, in termini di coppie di angolo $$ \theta$$ e velocità angolare $$ \dot{\theta} $$, fissate delle condizioni iniziali per $$ \theta_0 $$ e $$ \dot{\theta_0} $$. L'oscillazione del pendolo da destra verso sinistra (per poi tornare indietro) descrive una traiettoria di __transizioni di fase__ che nel ritratto in fase disegna una circonferenza.
 
-{% figure caption:"Andamento nel tempo e rappresentazione di stato del pendolo ideale scelta una coppia di condizioni iniziali. Si dice _ideale_ in quanto, nel sistema di riferimento inerziale preso in esame, si considerano nulle le forze di attrito. Il pendolo, insomma, continuerà a muoversi all'infinito di moto armonico sul piano _xy_." %}
 ![Ritratto in fase di un pendolo ideale](https://upload.wikimedia.org/wikipedia/commons/c/cd/Pendulum_phase_portrait_illustration.svg)
-{% endfigure %}
+
+Qui sopra si può vedere l'andamento nel tempo e la rappresentazione di stato del pendolo ideale scelta una coppia di condizioni iniziali. Si dice _ideale_ in quanto, nel sistema di riferimento inerziale preso in esame, si considerano nulle le forze di attrito. Il pendolo, insomma, continuerà a muoversi all'infinito di moto armonico sul piano _xy_.
+
+
 
 Di fatto, note le condizioni iniziali ed i vettori che determinano le transizioni di stato al variare di _t_, possiamo prevedere l'evoluzione del sistema e quindi il suo futuro. È il concetto base del __determinismo laplaciano__, che però studieremo nel dettaglio in uno dei prossimi articoli.
 

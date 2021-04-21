@@ -1,13 +1,11 @@
 source "https://rubygems.org"
 group :jekyll_plugins do
   gem 'jekyll'
-  gem 'minimal-mistakes-jekyll'
   gem 'activesupport'
   gem 'jekyll-default-layout'
   gem 'jekyll-feed'
   gem 'jekyll-optional-front-matter'
   gem 'jekyll-relative-links'
-  gem 'jekyll-sass-converter'
   gem 'jekyll-include-cache'
   gem 'kramdown'
   gem 'liquid'
@@ -22,7 +20,6 @@ group :jekyll_plugins do
   gem 'liquid_reading_time'
   gem 'jekyll-sitemap'
   gem 'jekyll-paginate'
-  gem 'jekyll-algolia'
   gem 'jekyll-gist'
   gem 'jekyll-figure'
   gem 'jekyll-archives'

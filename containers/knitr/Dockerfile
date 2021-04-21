@@ -1,4 +1,4 @@
-FROM rocker/verse:3.6.0
+FROM rocker/verse:latest
 ENV TZ="Europe/Rome"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

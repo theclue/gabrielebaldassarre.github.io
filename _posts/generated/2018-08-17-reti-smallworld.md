@@ -38,9 +38,8 @@ In altri termini, la progressione matematica parte dal presupposto che ognuna de
 
 Ma gli esseri umani non hanno tutte queste libertà, perché sono soggetti a tanti vincoli,  sociali, geografici, di età di razza, ecc. che riducono di moltissimo le possibilità di scelta nella creazione della loro rete sociale. Che non sarà più casuale, ma imposta in modo tale da facilitare la creazione di sottogruppi _per prossimità_.
 
-{% figure caption:"La scienza, certe volte, compie dei percorsi strani. Duncan Watts arrivò, con il suo relatore di dottorato Steven Strogatz, a formulare un credibile modello di reti sociali umane partendo dallo studio...dei grilli!" %}
 ![Un piccolo, simpatico grillo](/assets/images/girl-cricket-synronicity.jpg)
-{% endfigure %}
+La scienza, certe volte, compie dei percorsi strani. Duncan Watts arrivò, con il suo relatore di dottorato Steven Strogatz, a formulare un credibile modello di reti sociali umane partendo dallo studio...dei grilli!
 
 Nel mondo reale, in effetti, i nostri amici si conoscono, molto probabilmente, anche tra di loro; un individuo che è parte della nostra cerchia non porterà 250 nuovi individui all'interno del gruppo, ma molti di meno, in quanto gran parte di quei 250 sono già componenti del gruppo stesso.
 
@@ -61,10 +60,6 @@ ebbene, ci troviamo di fronte a un mondo piccolo, ovvero a una __rete small-worl
 Il mondo è, in definitiva, formato da piccole comunità (in letteratura chiamate _clique_) in cui solo una piccola parte dei loro componenti ha contatti con l'esterno. Se si può dire che il mondo è _connesso_ per via della presenza delle clique, è però _piccolo_ per via delle occasioni di connessione tra individui collocati in punti _molto distanti_ della rete.
 
 L'intuizione empirica è tutta qui; quello che serve adesso è un modello analitico.
-
-{% figure caption:"Eastern Island Parade in Jael, Spain, 2017" caption="Per riprendere l'esempio di prima, basta che un qualunque spettatore della parata di danze dell'Isola di Pasqua che si è tenuta a Jaén, in Spagna, nel 2017, sia venuto in contatto con un ballerino per abbattere le distanze che separano non solo i due diretti interessati, ma anche tutti i componenti delle rispettive cerchie." %}
-![Parata dell'Isola di Pasqua a Jael, Spagna, 2017](/assets/images/eastern-island-parade-spain.jpg)
-{% endfigure %}
 
 ### Il modello Watts-Strogatz
 
@@ -114,6 +109,7 @@ In queste reti la [distribuzione del grado]({% post_url SNA/2018-07-02-importanz
 
 D'altra parte, né il modello Erdős-Renyi né il modello Barabási–Albert simulano correttamente, al contrario del modello Watts-Strogatz, la coesione locale. Nessuno di essi, in definitiva, può considerarsi un modello reliastico per descrivere la struttura di una rete sociale, ma solo una approssimazione.
 
-{% figure caption:"La rete individuata dagli aeroporti e dalle rotte degli aerei è un'altra rete _small-world_ molto studiata, ma che bene mette in evidenza i limiti del modello Watts-Strogatz sull'incapacità di distinguere i nodi per impportanza. È evidente, infatti, come al Chicago International Airport confluiscano centinaia se non migliaia di rotte da molti altri scali e questo ne fa innegabilmente un _hub_, di gran lunga più importante dei molti scali regionali dissemninati in tutti gli Stati Uniti. Questa caratteristica delle reti _small-world_ è molto importante; basti pensare alle ripercussioni che si avrebbe sull'intero traffico aereo se un _hub_ dovesse essere non operativo, di gran lunga più serie di ciò che si avrebbe con uno scalo minore. Non a caso si dice che le reti _small-world_ sono molto vulnerabili ad attacchi mirati." %}
 ![Chicago Airport](/assets/images/chicago-airport.jpg)
-{% endfigure %}
+
+La rete individuata dagli aeroporti e dalle rotte degli aerei è un'altra rete _small-world_ molto studiata, ma che bene mette in evidenza i limiti del modello Watts-Strogatz sull'incapacità di distinguere i nodi per impportanza. È evidente, infatti, come al Chicago International Airport confluiscano centinaia se non migliaia di rotte da molti altri scali e questo ne fa innegabilmente un _hub_, di gran lunga più importante dei molti scali regionali dissemninati in tutti gli Stati Uniti. Questa caratteristica delle reti _small-world_ è molto importante; basti pensare alle ripercussioni che si avrebbe sull'intero traffico aereo se un _hub_ dovesse essere non operativo, di gran lunga più serie di ciò che si avrebbe con uno scalo minore. Non a caso si dice che le reti _small-world_ sono molto vulnerabili ad attacchi mirati.
+

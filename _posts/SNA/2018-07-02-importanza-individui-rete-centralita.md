@@ -83,9 +83,10 @@ Data l'importanza che ricopre, il nodo di un grafo (o di un sottografo) con la c
 
 Illustriamo meglio il concetto con un paio di esempi di reti illustrative.
 
-{% figure caption:"Il nodo rosso è un passaggio obbligato per tutti i percorsi che vogliano transitare da un lato all'altro della rete, mentre nessun percorso minimo ha bisogno dei nodi azzurri. Tanto più spesso un nodo si trova a giacere su un percorso minimo che collega coppie qualsiasi di altri nodi della rete, tanto più la sua betweeness centrality sarà alta." %}
+Il nodo rosso è un passaggio obbligato per tutti i percorsi che vogliano transitare da un lato all'altro della rete, mentre nessun percorso minimo ha bisogno dei nodi azzurri. Tanto più spesso un nodo si trova a giacere su un percorso minimo che collega coppie qualsiasi di altri nodi della rete, tanto più la sua betweeness centrality sarà alta.
+
 ![Butterfly Network - Betweeness Centrality](/assets/images/toy.butterfly.closeness.2.png)
-{% endfigure %}
+
 
 Visualizziamo, per finire, la nostra rete giocattolo, da cui ci accorgiamo di un'altra importante caratteristica della misura: _dipende moltissimo dalla topologia della rete_.
 In questo caso specifico, infatti, notiamo subito che più che stravolgere la nostra idea sugli hub ci "riabilita", paradossalmente, alcuni nodi periferici (azzurri, in basso) che hanno la fortuna di essere connessi a un grande hub. Ma ne parleremo meglio quando approfondiremo lo __studio della eccentricità__ e la __eigenvector centrality__.
