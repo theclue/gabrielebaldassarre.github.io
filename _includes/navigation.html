@@ -1,0 +1,35 @@
+
+    <!-- HEADER IMAGE -->
+    <!-- <center>
+        <span class="main-header-image">
+            <a href="/"><img src="/images/header/clean-and-simple-header.jpg"></a>
+        </span>
+    </center> -->
+    
+    <br>
+    <center>
+        <span class="main-header-image">
+            <h1 style="font-weight:100; font-kerning:normal"><a href="/">{{ site.title }}</a></h1>
+        </span>
+    </center>
+    <!-- NAVIGATION -->
+    <center>
+        <ul class="navigation-bar">
+            <li><a href="/">HOME</a></li>
+            {% for navpage in site.pages %}
+            {% if navpage.show_nav == true %}<li><a href="{{ navpage.url | relative_url }}">{{ navpage.title | strip_html }}</a></li>{% endif %}
+            {% endfor %}
+            {% if author.links %}
+                {% for link in author.links %}
+                    {% if link.label and link.url %}
+                    <li><a href="{{ link.url }}" rel="nofollow noopener noreferrer"><i class="{{ link.icon | default: 'fab fa-link fa-1x' }}" aria-hidden="true"></i></a></li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <!-- <li><a href="/publications/">PUBLICATIONS</a></li> -->
+            <!-- <li><a href="/software/">SOFTWARE</a></li> -->
+            <!-- <li><a href="/posts/">POSTS</a></li> -->
+            <!-- <li><a href="/images/radford_cv.pdf" target="#">CV</a></li> -->
+            <!-- <li><a href="/tags/">TAGS</a></li> -->
+        </ul>
+    </center> 

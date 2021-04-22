@@ -1,0 +1,53 @@
+---
+layout: post-index
+title: Fisica
+permalink: /fisica
+show_nav: true
+header:
+  overlay_image: /assets/images/effetto-fotoelettrico-overlay.png
+  teaser: /assets/images/effetto-fotoelettrico-teaser.jpg
+  overlay_filter: 0.5
+---
+<article>
+    <h1 class="entry-title">
+        <a>{{ page.title }}</a>
+    </h1>
+    <hr>
+<!--</article>-->
+
+{% for post in site.categories.Fisica %}
+    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture next_year %}{{ post.next.date | date: "%Y" }}{% endcapture %}
+
+    {% if forloop.first %}
+    <!--<article>-->
+        <h1 class="entry-title">{{ next_year }}</h1>
+      
+        <ul>
+        {% endif %}
+
+        <li class="entry-title"><a href="{{ post.url | relative_url }}" rel="bookmark" title="{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}}" itemprop="url">{{ post.title | markdownify | remove: "<p>" | remove: "</p>" }}</a> <br> 
+             <div class="post-byline">
+                {% if post.excerpt %}{{ post.excerpt | markdownify | strip_newlines }}{% endif %}
+            </div>
+
+                <div class="post-date">
+                    {% include page_meta.html %}
+                </div>
+        </li>
+
+    {% if forloop.last %}
+    </ul>
+        
+    <!--</article>-->
+    {% else %}
+        {% if this_year != next_year %}
+          </ul>
+        <!--</article>-->
+        <!--<article>-->
+          <h1 id="{{ next_year }}-ref" class="entry-title">{{next_year}}</h1>
+          <ul>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+</article>
