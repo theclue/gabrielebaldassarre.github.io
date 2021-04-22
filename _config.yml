@@ -10,23 +10,14 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-remote_theme:     "benradford/Slate-and-Simple-Jekyll-Theme"
-
 title:            "Gabriele Baldassarre"
-description:      Pochi grassi e ingredienti rigorosamente POSIX standard"
+description:      "Pochi grassi e ingredienti rigorosamente POSIX standard"
 copyright:        "Gabriele Baldassarre"
        
 
 future:      false  # publish future dated posts --  true, false (default) 
 highlighter: rouge
 markdown:    kramdown
-
-paginate_path: "/posts/page:num"
-
-permalink: /:categories/:year-:month-:day/:title.html
-
-# Amount of post to show on home page
-paginate: 10
 
 # Site Settings
 locale                   : it-IT
@@ -39,26 +30,41 @@ url                      : "https://gabrielebaldassarre.com"
 baseurl                  : "/"
 repository               : "theclue/gabrielebaldassarre.com"
 teaser                   : "/assets/images/default-post-teaser.png"
+words_per_minute         : 150
+atom_feed:
+  hide                   : false
+  path                   : # blank (default) uses feed.xml
+
+# SEO Related
+google_site_verification :
+bing_site_verification   :
+yandex_site_verification :
+naver_site_verification  :
+
+# Analytics
+analytics:
+  provider               : "google-gtag" # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "GTM-WH4NHF"
+    anonymize_ip         : # true, false (default)
+
 
 # Site Author
 author:
   name             : "Gabriele Baldassarre"
   avatar           : "/assets/images/gabriele-baldassarre.png"
-  bio              : "Metti un _maker_ a parlare di Fisica, Informatica e Tecnologia e questo è il risultato."
+  bio              : "Ingegnere per professione, mi occupo di analisi dati, di cloud computing e di tenere il cervello sempre acceso."
   location         : "Milano, Italia"
   email            :
   links:
     - label: "GitHub"
-      icon: "fab fa-fw fa-github"
+      icon: "fab fa-github fa-1x"
       url: "https://github.com/theclue"
     - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
+      icon: "fab fa-linkedin fa-1x"
       url: "https://www.linkedin.com/in/gabrielebaldassarre"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/bashebiscotti"
     - label: "Goodreads"
-      icon: "fab fa-fw fa-goodreads"
+      icon: "fab fa-goodreads fa-1x"
       url: "https://goodreads.com/theclue"
 
 # Reading Files
@@ -105,6 +111,7 @@ exclude:
   - containers
   - Makefile
   - bin
+  - "*.Rmd"
 
 keep_files:
   - .git
@@ -141,7 +148,7 @@ sass:
 
 # Outputting
 permalink: /:title/
-paginate: 5 # amount of posts to show
+paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: # Europe/Rome
 
@@ -210,10 +217,10 @@ compress_html:
 
 # scripts
 head_scripts:
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
-  - /assets/htmlwidgets-1.2/htmlwidgets.js
-  - /assets/vis-4.20.1/vis.min.js
-  - /assets/visNetwork-binding-2.0.4/visNetwork.js
+#  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 after_footer_scripts:
   - //s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d790b1b248d9eaf
 
@@ -224,7 +231,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
+      layout: post
       author_profile: true
       read_time: true
       share: true
@@ -237,7 +244,7 @@ defaults:
       path: "_pages"
       type: pages
     values:
-      layout: single
+      layout: page
       author_profile: true
       read_time: false
       toc: false

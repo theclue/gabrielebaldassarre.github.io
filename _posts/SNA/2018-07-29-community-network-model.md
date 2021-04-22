@@ -15,9 +15,9 @@ Sfortunatamente per gli hippie e per i fisici, però, il XXI Secolo si è aperto
 
 Ma prima di parlare di questo modello più evoluto, vediamo innanzitutto brevemente come si è chiuso il XX Secolo in casa dei sociologi.
 
-Stanley Milgram, lo psicologo statunitense che, nell'ambito dell'arcinoto esperimento, nel 1967 spedì lettere in giro per tutti gli Stati Uniti e dimostrò che viviamo in un mondo piccolo. Non tutti sanno, però, che prima di lui l'esistenza dello _Small-World effect_ era stata speculata dallo scrittore ungherese [Frigyers Karinthy](http://www.eastjournal.net/archives/74471) mentre [Ithiel de Sola Pool](https://en.wikipedia.org/wiki/Ithiel_de_Sola_Pool) e Manfred Kochen colmarono, nel 1978 e con un rigoroso  modello matematico, le lacune dell'illustre, e discusso, predecessore (foto: [Psychology Unlocked](http://www.psychologyunlocked.com/stanley-milgram/)).
-
+{% figure caption:"Stanley Milgram, lo psicologo statunitense che, nell'ambito dell'arcinoto esperimento, nel 1967 spedì lettere in giro per tutti gli Stati Uniti e dimostrò che viviamo in un mondo piccolo. Non tutti sanno, però, che prima di lui l'esistenza dello _Small-World effect_ era stata speculata dallo scrittore ungherese [Frigyers Karinthy](http://www.eastjournal.net/archives/74471) mentre [Ithiel de Sola Pool](https://en.wikipedia.org/wiki/Ithiel_de_Sola_Pool) e Manfred Kochen colmarono, nel 1978 e con un rigoroso  modello matematico, le lacune dell'illustre, e discusso, predecessore (foto: [Psychology Unlocked](http://www.psychologyunlocked.com/stanley-milgram/))." %}
 ![Stanley Milgram](/assets/images/stanley-milgram.jpg)
+{% endfigure %}
 
 ## Cosa si sapeva già: le tre caratteristiche di una rete sociale
 
@@ -37,10 +37,9 @@ Così come il DNA è costruito da una sequenza di quattro basi elementari (adeni
 
 Il motivo per cui l'elemento più atomico di organizzazione delle comunità sociali sia il triangolo è ancora oggetto di studi e non vi ci addentreremo in questa sete. Fatto sta, che, come una catena di DNA è descritta da una lunga sequenza di basi, una rete sociale può essere descritta da una lunga _sequenza di triangoli_. Questi triangoli prendono il nome di _triadi_ o, più spesso, di __clique__ (in italiano orribilmente traducibile con 'cricca'). E queste _clique_ non sono, tipicamente, oggetti statici; le relazioni evolvono nel tempo e la struttura della rete con esso. Con essa, quindi, cambiano le clique.
 
-Una serie di clique, o triadi. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. Tra questi esempi, l'unica caratterizzata da una certa instabilità è quella di sinistra che non a caso prende il nome di _triade proibita (forbidden triad)_: la probabilità che evolva, presto o tardi, in una delle due configurazioni più a destra è molto alta.
-
+{% figure caption:"Una serie di clique, o triadi. In effetti, diverse possono essere le configurazioni con cui si presenta una triade aperta o chiusa. Tra questi esempi, l'unica caratterizzata da una certa instabilità è quella di sinistra che non a caso prende il nome di _triade proibita (forbidden triad)_: la probabilità che evolva, presto o tardi, in una delle due configurazioni più a destra è molto alta." %}
 ![Triadi in equilibrio e proibite](/assets/images/triadi.svg)
-
+{% endfigure %}
 
 Il motivo per cui avviene questa "risoluzione" della clique ha cause fisiche: minimizzazione dell'energia. Troppo dispendiosa di energie, infatti, è la situazione del nodo _A_, costretto a mantenere due canali segregati con _C_ e _B_ in una situazione di perenne stress sociale. Molto più facile risolverla facendo sì che i due nodi non connessi tra di loro entrino in contatto oppure interrompendo la relazione con uno dei due vicini (_C_, in questo caso).
 
@@ -52,7 +51,7 @@ Pensare alle reti come oggetti statici è un errore: le reti sociali si aggiorna
 
 Ebbene, quando una rete sociale è in espansione, si può osservare che i nuovi nodi entranti tenderanno a estrudere collegamenti verso i nodi della rete che ne presentano già molti altri, come se la popolarità di un nodo _attirasse_ a sé i nuovi arrivati. Questo comportamento, chiamato __attaccamento preferenziale__ crea delle strutture di rete in cui pochi nodi molto influenti, gli __hub__, o se vogliamo i _leader_, detengono un numero di collegamenti attivi molto superiore alla media degli altri nodi della rete. Le reti sociali presentano questa caratteristica, ma non tutte e comunque non tutte le reti (per es. il fenomeno è molto più raro nelle reti di informazione, come Internet).
 
-Capire se ci troviamo di fronte a una rete di questo tipo, che per inciso prende il nome di __scale-free__,  non è difficile: basta studiare la distribuzione del [grado]({% post_url SNA/2018-07-02-importanza-individui-rete-centralita %}) di tutti i nodi della rete. In una rete non _scale-free_ non abbiamo motivo di sospettare la presenza di _hub_ privilegiati perché la probabilità di un nodo di avere \\( k \\) connessioni è identica per tutti i nodi della rete e vale \\( p(k) \\). E, in effetti, la degree centrality di distribuisce secondo una distribuzione simmetrica (la binomiale, nella fattispecie) attorno alla degree centrality media \\( k_{avg} \\).
+Capire se ci troviamo di fronte a una rete di questo tipo, che per inciso prende il nome di __scale-free__,  non è difficile: basta studiare la distribuzione del grado di tutti i nodi della rete. In una rete non _scale-free_ non abbiamo motivo di sospettare la presenza di _hub_ privilegiati perché la probabilità di un nodo di avere \\( k \\) connessioni è identica per tutti i nodi della rete e vale \\( p(k) \\). E, in effetti, la degree centrality di distribuisce secondo una distribuzione simmetrica (la binomiale, nella fattispecie) attorno alla degree centrality media \\( k_{avg} \\).
 
 Una rete _scale-free_ munita, come detto, di _hubs_ presenterà, invece, una distribuzione con una coda molto lunga sulla destra, dove ci sono nodi con una degree centrality di molto superiore alla media. Più precisamente, la degree centrality segue la [legge di potenza]({% post_url generated/2018-08-12-legge-potenza-powerlaw %}), o __power law__.
 

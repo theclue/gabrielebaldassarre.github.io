@@ -1,5 +1,5 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Esperimenti ripetuti e preparazione di un sistema
 excerpt: La meccanica quantistica tutto sommato non distrugge totalmente la nostra idea del mondo. A patto di rinunciare a un po' di confortante determinismo.
 header:

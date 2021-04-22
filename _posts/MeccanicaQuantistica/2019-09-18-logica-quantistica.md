@@ -1,5 +1,5 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Logica classica e logica quantistica
 excerpt: Lo spazio degli stati di un sistema classico è governato dalla logica booleana. Vedremo oggi che, in un sistema quantistico le cose sono un po' più complicate e molto meno intuitive.
 header:

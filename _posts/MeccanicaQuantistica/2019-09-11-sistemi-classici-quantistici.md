@@ -1,5 +1,5 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Sistemi classici e sistemi quantistici
 excerpt: Prima di iniziare lo studio della meccanica quantistica, è importante chiarire cosa si intende per sistema e cosa differenzia un sistema quantistico da un sistema classico.
 header:

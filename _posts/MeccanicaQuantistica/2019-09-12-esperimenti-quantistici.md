@@ -1,9 +1,9 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Esperimenti quantistici
 excerpt: Un grande classico della meccanica quantistica è l'affermazione secondo cui una misurazione altera il sistema. In questo articolo cerchiamo di dare una spiegazione più rigorosa di questa concezione comune.
 header:
-  overlay_image: /assets/images/spazi-vettoriali-overlay.png
+  overlay_image: /assets/images/spazi-vettoriali-overlay.jpg
   teaser: /assets/images/spazi-vettoriali-teaser.jpg
   overlay_filter: 0.5
 ---

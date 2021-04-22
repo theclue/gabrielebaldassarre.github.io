@@ -11,7 +11,7 @@ header:
 
 
 
-Lo studio degli autovettori e dei corrispondenti autovalori è un qualcosa in cui ci siamo cimentati probabilmente tutti almeno una volta nella vita. In pochi, tuttavia, sanno che questo strumento è di importanza vitale sia per la Social Network Analysis che per la Fisica Quantistica. Nel primo caso, per via di tutto ciò che concerne la [centralità]({% post_url SNA/2018-07-02-importanza-individui-rete-centralita %}).
+Lo studio degli autovettori e dei corrispondenti autovalori è un qualcosa in cui ci siamo cimentati probabilmente tutti almeno una volta nella vita. In pochi, tuttavia, sanno che questo strumento è di importanza vitale sia per la Social Network Analysis che per la Fisica Quantistica. Nel primo caso, per via di tutto ciò che concerne la centralità.
 
 Senza la pretesa di fornire una trattazione rigorosa sull'argomento come se dovessimo preparare un esame di algebra lineare, qui ci concentreremo sull'intuizione dei concetti fondamentali così da avere tutti le conoscenze necessarie per utilizzarli in ambito di analisi delle reti sociali.
 
@@ -31,8 +31,9 @@ $$ A(x, y) = \lambda(x, y) $$
 
 I rispettivi coefficienti \\( \lambda \\) degli autovettori prendono il nome di __autovalori__. In caso di \\( \lambda \\) positivo, il rispettivo vettore trasformato non subisce un cambiamento di verso; quando negativo, il verso ne risulterà opposto. Ma, sia come sia, la direzione individuata dagli autovettori non cambia.
 
+{% figure caption:"Esempio di trasformazione. La matrice \\( A = \begin{bmatrix} 2 & 1 \\\\ 1 & 2 \end{bmatrix} \\) produce gli autovettori \\( v_1= \begin{pmatrix} 1 & 1 \end{pmatrix}^T \\) e \\( v_2= \begin{pmatrix} 1 & -1 \end{pmatrix}^T \\) nelle direzioni rappresentate rispettivamente dalla retta blu e violetto. Tutti i vettori blu, paralleli alla direzione individuata da \\( v_1 \\) sono autovettori perché, quando trasformati attraverso \\( A \\), individuano un vettore con la stessa direzione, ma con un modulo moltiplicato per l'autovalore \\( \lambda_1=3 \\). Allo stesso modo, i vettori viola sono autovettori con autovalore \\( \lambda_2 = 1 \\). I vettori rossi, invece, quando trasformati da \\( A \\), variano in direzione: essi non sono autovettori (fonte: [Wikipedia](https://en.wikipedia.org/wiki/File:Eigenvectors-extended.gif))." %}
 ![Esempio di trasformazione e autovettori](/assets/images/eigenvectors-extended.gif)
-Esempio di trasformazione. La matrice \\( A = \begin{bmatrix} 2 & 1 \\\\ 1 & 2 \end{bmatrix} \\) produce gli autovettori \\( v_1= \begin{pmatrix} 1 & 1 \end{pmatrix}^T \\) e \\( v_2= \begin{pmatrix} 1 & -1 \end{pmatrix}^T \\) nelle direzioni rappresentate rispettivamente dalla retta blu e violetto. Tutti i vettori blu, paralleli alla direzione individuata da \\( v_1 \\) sono autovettori perché, quando trasformati attraverso \\( A \\), individuano un vettore con la stessa direzione, ma con un modulo moltiplicato per l'autovalore \\( \lambda_1=3 \\). Allo stesso modo, i vettori viola sono autovettori con autovalore \\( \lambda_2 = 1 \\). I vettori rossi, invece, quando trasformati da \\( A \\), variano in direzione: essi non sono autovettori (fonte: [Wikipedia](https://en.wikipedia.org/wiki/File:Eigenvectors-extended.gif)).
+{% endfigure %}
 
 ## Come calcolare gli autovettori e gli autovalori
 

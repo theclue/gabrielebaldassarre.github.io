@@ -1,5 +1,5 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Lo spazio degli stati di un sistema quantistico
 excerpt: "In questo articolo introdurremo lo spazio vettoriale complesso che rappresenta l'ossatura del modello matematico utilizzato per studiare gli stati di un sistema quantistico"
 header:

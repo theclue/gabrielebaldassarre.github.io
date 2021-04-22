@@ -1,5 +1,5 @@
 ---
-category: Meccanica Quantistica
+category: Fisica
 title: Basi ortonormali in un sistema quantistico
 excerpt: "In questo articolo introdurremo il concetto di base di un sistema quantistico e di come questo rappresenti tutti i suoi stati possibili"
 header:
