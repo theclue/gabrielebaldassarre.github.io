@@ -163,7 +163,8 @@ plugins:
   - jekyll-redirect-from
   - liquid_pluralize
   - liquid_reading_time
-  - jekyll-archives
+  - jekyll-compress-images
+  - jekyll-zopfli
   - jekyll-feed
   - jekyll-include-cache
   - kramdown-parser-gfm 
@@ -178,7 +179,6 @@ whitelist:
   - liquid_reading_time
   - jekyll-feed
   - jekyll-include-cache
-
 
 # Archives
 #  Type
@@ -215,9 +215,11 @@ compress_html:
   ignore:
     envs: development
 
+zopfli:
+  replace_files: true
+
 # scripts
 head_scripts:
-#  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
