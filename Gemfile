@@ -22,7 +22,5 @@ group :jekyll_plugins do
   gem 'jekyll-paginate'
   gem 'jekyll-gist'
   gem 'jekyll-figure'
-  gem 'jekyll-zopfli'
-  gem 'jekyll-compress-images'
   gem 'kramdown-parser-gfm'
 end

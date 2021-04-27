@@ -1,33 +1,8 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="{{ site.lang }}"><!--<![endif]-->
+---
+layout: default
+---
 
-<head>
-    {% include head.html %}
-    {% include navigation.html %}
-</head>
- 
-<!-- BODY -->
-<body id="post-index">
-    {% include browser-upgrade.html %}
-
-    <!-- MAIN -->
-    <div id="main" role="main">
-                      {% if page.header.overlay_image != "" or page.header.overlay_image != nil %}
-                        <div class="featured-image"><img src="{{ page.header.overlay_image | relative_url }}" style="width:100%"></div>
-                      {% endif %}
-      {{ content }}
-    </div>       
-<!-- FOOTER -->  
-<footer>  
-    <div class="footer-wrapper">
-        <footer role="contentinfo">
-            {% include footer.html %}
-        </footer>
-    </div>   
-</footer>
-{% include analytics.html %}
-</body>
-</html>
+{% if page.header.overlay_image != "" or page.header.overlay_image != nil %}
+<div class="featured-image"><img src="{{ page.header.overlay_image | relative_url }}" style="width:100%"></div>
+{% endif %}
+{{ content }}
