@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 group :jekyll_plugins do
-  gem 'jekyll'
+  gem 'jekyll', "4.2"
   gem 'activesupport'
   gem 'jekyll-default-layout'
   gem 'jekyll-feed'

@@ -10,15 +10,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r phase.setup, include = FALSE, cache = FALSE}
-if (!require("pacman")) install.packages("pacman"); invisible(library(pacman))
-tryCatch({
-  p_load("tidyverse", "phaseR")
-}, warning=function(w){
-  stop(conditionMessage(w))
-})
 
-```
 
 Supponiamo di voler studiare la dinamica di un sistema inerziale composto da un singolo punto materiale in moto nello spazio. In quanto tale, suddetto punto e soggetto alla legge del moto di Newton:
 
@@ -36,16 +28,16 @@ Nel caso specifico, fissata una forza _F_ come una ben definita funzione delle c
 
 L'evoluzione del sistema altri non è che una _successione_ di punti nello spazio delle fasi o, se il sistema è continuo, una curva avente come tangente in ogni punto il vettore le cui componenti sono i due vettori _{x, v}_ al variare di _t_.
 
-Questo consente di poter visualizzare lo spazio degli stati in un diagramma chiamato __ritratto in fase__ in cui andare a disegnare tutte le possibili _traiettorie_ del sistema (in che stato il sistema evolverà al variare di _t_) e definirne qualitativamente le peculiarità.
+Questo consente di poter visualizzare lo spazio degli stati in un diagramma chiamato __ritratto di fase__ in cui andare a disegnare tutte le possibili _traiettorie_ del sistema (in che stato il sistema evolverà al variare di _t_) e definirne qualitativamente le peculiarità.
 
 Ma forse è il caso di fare un esempio.
 
 Il pendolo ideale
 -----------------
 
-Innanzitutto una precisazione. Il concetto di ritratto in fase è del tutto generale e non è legato necessariamente a un sistema meccanico (descritto dalle equazioni del moto di Newton), ma può essere utilizzato su sistemi dinamici di qualsiasi natura e con un numero qualsiasi di dimensioni.
+Innanzitutto una precisazione. Il concetto di ritratto di fase è del tutto generale e non è legato necessariamente a un sistema meccanico (descritto dalle equazioni del moto di Newton), ma può essere utilizzato su sistemi dinamici di qualsiasi natura e con un numero qualsiasi di dimensioni.
 
-Nulla vieta, per capirci, di descrivere un sistema attraverso l'uso di _N_ variabili, anche infinite, e relative condizioni iniziali in modo da individuare uno spazio di fase in $$ \mathbb{R}^N \times \mathbb{R}^N $$. Né siamo costretti a utilizzare vettori reali (in meccanica quantistica, ad esempio, [quei vettori sono complessi]({% post_url MeccanicaQuantistica/2019-10-04-spazio-stati-quantistici %})).
+Nulla vieta, per capirci, di descrivere un sistema attraverso l'uso di _N_ variabili, anche infinite, e relative condizioni iniziali in modo da individuare uno spazio di fase in $$ \mathbb{R}^N \times \mathbb{R}^N $$. Né siamo costretti a utilizzare vettori reali (in meccanica quantistica, ad esempio, [quei vettori sono complessi]({% post_url Fisica/2019-10-04-spazio-stati-quantistici %})).
 
 Il problema, più che altro, sta nell'efficacia della _rappresentazione_ di uno spazio degli stati quando la dimensionalità del sistema dinamico cresce.
 
@@ -59,40 +51,17 @@ L'equazione che ne regola il moto armonico è le seguente:
 
 $$ \ddot{\theta} = -\frac{g}{l}sin\theta $$
 
-Nell'immagine in basso, possiamo vedere i vari stati che assume il pendolo, in termini di coppie di angolo $$ \theta$$ e velocità angolare $$ \dot{\theta} $$, fissate delle condizioni iniziali per $$ \theta_0 $$ e $$ \dot{\theta_0} $$. L'oscillazione del pendolo da destra verso sinistra (per poi tornare indietro) descrive una traiettoria di __transizioni di fase__ che nel ritratto in fase disegna una circonferenza.
+Nell'immagine in basso, possiamo vedere i vari stati che assume il pendolo, in termini di coppie di angolo $$ \theta$$ e velocità angolare $$ \dot{\theta} $$, fissate delle condizioni iniziali per $$ \theta_0 $$ e $$ \dot{\theta_0} $$. L'oscillazione del pendolo da destra verso sinistra (per poi tornare indietro) descrive una traiettoria di __transizioni di fase__ che nel ritratto di fase disegna una circonferenza.
 
 {% figure caption:"Andamento nel tempo e rappresentazione di stato del pendolo ideale scelta una coppia di condizioni iniziali. Si dice _ideale_ in quanto, nel sistema di riferimento inerziale preso in esame, si considerano nulle le forze di attrito. Il pendolo, insomma, continuerà a muoversi all'infinito di moto armonico sul piano _xy_." %}
-![Ritratto in fase di un pendolo ideale](https://upload.wikimedia.org/wikipedia/commons/c/cd/Pendulum_phase_portrait_illustration.svg)
+![Ritratto di fase di un pendolo ideale](https://upload.wikimedia.org/wikipedia/commons/c/cd/Pendulum_phase_portrait_illustration.svg)
 {% endfigure %}
 
 Di fatto, note le condizioni iniziali ed i vettori che determinano le transizioni di stato al variare di _t_, possiamo prevedere l'evoluzione del sistema e quindi il suo futuro. È il concetto base del __determinismo laplaciano__, che però studieremo nel dettaglio in uno dei prossimi articoli.
 
-Se, però, __non__ fissiamo una coppia di condizioni iniziali, i vettori di tutte le possibili transizioni di stato vanno a costruire un _campo vettoriale_ che descrive __tutti__ gli stati possibili del sistema: il ritratto in fase vero e proprio. Non offre una soluzione analitica dell'equzione differenziale che regola il moto del sistema (cosa che pure sarebbe stata possibile calcolare nell'esempio specifico del pendolo, ma che in genere è estremamente complicata), ma offre una buona vista di sintesi ed enfatizza la presenza di regioni particolari. Vediamole:
+Se, però, __non__ fissiamo una coppia di condizioni iniziali, i vettori di tutte le possibili transizioni di stato vanno a costruire un _campo vettoriale_ che descrive __tutti__ gli stati possibili del sistema: il ritratto di fase vero e proprio. Non offre una soluzione analitica dell'equzione differenziale che regola il moto del sistema (cosa che pure sarebbe stata possibile calcolare nell'esempio specifico del pendolo, ma che in genere è estremamente complicata), ma offre una buona vista di sintesi ed enfatizza la presenza di regioni particolari. Vediamole:
 
-```{r phase.portait, warning = FALSE, fig.asp = .8}
-
-simplePendulum_flowField  <- flowField(simplePendulum,
-                                       xlim       = c(-7, 7),
-                                       ylim       = c(-5, 7),
-                                       parameters = 4,
-                                       add        = FALSE,
-                                       points = 20,
-                                       main = "Pendolo Ideale - Ritratto in Fase",
-                                       state.names = c(expression(theta), expression(dot(theta))),
-                                       axes=TRUE,
-                                       xaxt='n',
-                                       yaxt='n')
-
-axis(side=2, at=c(-2*pi,-pi, 0, pi, 2*pi), labels=expression(-2*pi,  -pi, 0, pi, 2*pi))
-axis(side=1, at=c(-2*pi, -3*pi/2, -pi, -pi/2, 0,  pi/2, pi,3*pi/2, 2*pi), labels=expression(-2*pi, -3*pi/2, -pi, -pi/2, 0, pi/2, pi, -3*pi/2, 2*pi))
-
-simplePendulum_trajectory <- trajectory(simplePendulum,
-                                        y0 = matrix(c(0, 1, -6, 1, 5, 1, 0, 4, 0, -3, pi, 0, 0, 0), 7, 2, byrow = TRUE),
-                                        tlim = c(0, 10),
-                                        col = c(rep("orange", 3), rep("darkblue", 2), rep("red", 2)),
-                                        parameters = 5)
-
-```
+![plot of chunk phase.portait](/assets/figures/phase.portait-1.svg)
 
 Interpretazione del diagramma
 -----------------------------

@@ -37,7 +37,7 @@ Tra le misure derivate dalla struttura della rete, un ruolo importantissimo rico
 * La __in-degree__, che misura il numero di connessioni __entranti__ in un nodo;
 * La __out-degree__, che misura il numero di connessioni __uscenti__ da un nodo.
 
-A titolo di esempio, quella qui sotto è una rete non direzionata di tipo [small-world]({% post_url generated/2018-08-17-reti-smallworld %}), generata casualmente; l'etichetta sotto ognuno dei nodi rappresenta, appunto, il _grado_.
+A titolo di esempio, quella qui sotto è una rete non direzionata di tipo [small-world]({% post_url 2018-08-17-reti-smallworld %}), generata casualmente; l'etichetta sotto ognuno dei nodi rappresenta, appunto, il _grado_.
 
 ```{r smallworld-degree, warning = FALSE, fig.asp = .5}
 

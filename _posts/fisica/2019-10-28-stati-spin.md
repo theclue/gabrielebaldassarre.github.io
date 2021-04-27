@@ -8,7 +8,7 @@ header:
   overlay_filter: 0.5
 ---
 
-Negli articoli precedenti, abbiamo definito lo spazio degli stati di un sistema quantistico come [un sistema vettoriale composto da vettori complessi]({% post_url MeccanicaQuantistica/2019-10-04-spazio-stati-quantistici %}) e, come tale, caratterizzato da una direzione, un modulo e un verso (anche se intesi non in senso spaziale). Abbiamo anche visto che [una certa impredicibilità]({% post_url MeccanicaQuantistica/2019-09-13-esperimenti-quantistici-distribuzione %}) è tipica di un sistema quantistico e che la misura stessa, per quanto infinitamente gentile, altera (anzi, come abbiamo detto, _prepara_) il sistema.
+Negli articoli precedenti, abbiamo definito lo spazio degli stati di un sistema quantistico come [un sistema vettoriale composto da vettori complessi]({% post_url Fisica/2019-10-04-spazio-stati-quantistici %}) e, come tale, caratterizzato da una direzione, un modulo e un verso (anche se intesi non in senso spaziale). Abbiamo anche visto che [una certa impredicibilità]({% post_url Fisica/2019-09-13-esperimenti-quantistici-distribuzione %}) è tipica di un sistema quantistico e che la misura stessa, per quanto infinitamente gentile, altera (anzi, come abbiamo detto, _prepara_) il sistema.
 
 Appurato che i vettori di stato predicono in modo perfettamente deterministico ciò che si può conoscere di un sistema (che, però, non è tutta l'informazione contenuta in un sistema; questo, per via del principio di indeterminazione), abbiamo tutti gli elementi per studiare un sistema concreto.
 
@@ -50,7 +50,7 @@ Consideriamo ora un generico vettore di stato $$ \vert A \rangle $$. Esso sarà 
 
 $$ \vert A \rangle = \alpha_u \vert u \rangle + \alpha_d \vert d \rangle $$
 
-Abbiamo visto che [possiamo determinare le componenti lungo la base]({% post_url MeccanicaQuantistica/2019-10-21-basi-ortonormali %}) con l'operazione di prodotto interno del vettore di stato _A_ con i vettori della base:
+Abbiamo visto che [possiamo determinare le componenti lungo la base]({% post_url Fisica/2019-10-21-basi-ortonormali %}) con l'operazione di prodotto interno del vettore di stato _A_ con i vettori della base:
 
 $$ \alpha_u = \langle A \vert u \rangle \tag{*} $$
 $$ \alpha_d = \langle A \vert d \rangle \tag{**} $$

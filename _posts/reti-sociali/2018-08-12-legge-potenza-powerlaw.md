@@ -3,7 +3,7 @@ title: "Approfondimento matematico: la power law"
 excerpt: La legge di potenza, o _power law_ è uno dei costrutti matematici che ricoprono massima
   importanza in Social Network Analysis. In questo articolo ci doteremo di tutti gli
   strumenti teorici e metodologici per applicarla allo studio delle reti
-category: "Matematica"
+category: "Reti Sociali"
 header:
   overlay_filter: 0.5
   overlay_image: /assets/images/powerlaw-overlay.jpg

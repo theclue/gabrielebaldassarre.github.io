@@ -8,6 +8,7 @@ steps:
     args: ['jekyll','build']
     env:
     - 'JEKYLL_ENV=production'
+    - 'JEKYLL_VERSION=4.2'
   - id: Deploy to App Engine
     name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy"]

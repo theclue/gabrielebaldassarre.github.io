@@ -1,7 +1,7 @@
 ---
 title: "Una rete sociale fatta di comunità"
 excerpt: "L'esperimento dei sei gradi di separazione ci conferma che il mondo è sorprendentemente _piccolo_ e _ben connesso_. Recentemente, però, si è scoperto che le reti sociali umane presentano una caratteristica ancora più affascinate, fondamentale per la loro stessa sopravvivenza: l'innata propensione ad organizzarsi in community."
-category: "Social Network Analysis"
+category: "Reti Sociali"
 header:
   overlay_image: /assets/images/community-network-overlay.jpg
   teaser: /assets/images/community-network-teaser.jpg
@@ -54,7 +54,7 @@ Ebbene, quando una rete sociale è in espansione, si può osservare che i nuovi 
 
 Capire se ci troviamo di fronte a una rete di questo tipo, che per inciso prende il nome di __scale-free__,  non è difficile: basta studiare la distribuzione del grado di tutti i nodi della rete. In una rete non _scale-free_ non abbiamo motivo di sospettare la presenza di _hub_ privilegiati perché la probabilità di un nodo di avere \\( k \\) connessioni è identica per tutti i nodi della rete e vale \\( p(k) \\). E, in effetti, la degree centrality di distribuisce secondo una distribuzione simmetrica (la binomiale, nella fattispecie) attorno alla degree centrality media \\( k_{avg} \\).
 
-Una rete _scale-free_ munita, come detto, di _hubs_ presenterà, invece, una distribuzione con una coda molto lunga sulla destra, dove ci sono nodi con una degree centrality di molto superiore alla media. Più precisamente, la degree centrality segue la [legge di potenza]({% post_url generated/2018-08-12-legge-potenza-powerlaw %}), o __power law__.
+Una rete _scale-free_ munita, come detto, di _hubs_ presenterà, invece, una distribuzione con una coda molto lunga sulla destra, dove ci sono nodi con una degree centrality di molto superiore alla media. Più precisamente, la degree centrality segue la [legge di potenza]({% post_url 2018-08-12-legge-potenza-powerlaw %}), o __power law__.
 
 {% figure caption:"La distribuzione del numero dei collegamenti dei nodi per una rete non _scale-free_ (a sinistra) con una _scale-free_ (a destra). Sull'asse delle ascisse il numero di connessioni \\( k \\) di un nodo, sulle ordinate la percentuale di nodi tra tutti quelli della rete ad avere esattamente \\( k \\) connessioni. In una rete non _scale-free_ si ha il tipico andamento a campana di una binomiale (o di una Poisson o anche di una normale, a seconda delle approssimazioni applicate al modello) con la maggior parte dei nodi avente un numero di nodi vicino alla media e scarsa probabilità di avere degli _hub_ o dei nodi fortemente disconessi. Una rete _scale-free_, invece, ha l'andamento tipico di una power law, con la maggior parte dei nodi ad avere poche connessioni e pochi nodi ad avere un numero di connessioni \\( k \\) molto maggiori della media \\( k_{avg} \\)." %}
 ![Bell-shape & Power Law](/assets/images/powerlaw.gif)
