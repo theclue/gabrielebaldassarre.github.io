@@ -1,6 +1,8 @@
 ---
 layout: post-index
 title: Blog
+header:
+  teaser: /assets/images/gabriele-baldassarre-teaser.jpg
 ---
 
 {% if paginator.previous_page %}
@@ -22,12 +24,12 @@ title: Blog
         <div class="col-1-2">
 
             <h2 class="entry-title">
-                About me
+                {{ site.data.ui-text[site.locale].about_me | default: "About me" }}
             </h2><hr>
             {{ site.author.bio}}
 
             <h2 class="entry-title">
-                Work
+                {{ site.data.ui-text[site.locale].work | default: "Work" }}
             </h2><hr>
             <ul>
                 <li><b>IT Manager</b>, Jakala Spa</li>

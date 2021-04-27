@@ -4,6 +4,7 @@ excerpt: "L'esperimento dei sei gradi di separazione ci conferma che il mondo è
 category: "Social Network Analysis"
 header:
   overlay_image: /assets/images/community-network-overlay.jpg
+  teaser: /assets/images/community-network-teaser.jpg
   overlay_filter: 0.5
 ---
 

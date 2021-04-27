@@ -11,6 +11,9 @@
             {% for navpage in site.pages %}
             {% if navpage.show_nav == true %}<li><a href="{{ navpage.url | relative_url }}">{{ navpage.title | strip_html }}</a></li>{% endif %}
             {% endfor %}
+            {% for hotlink in site.data.hotlinks %}
+            <li><a href="{{ hotlink.url | relative_url }}">{{ hotlink.label }}</a></li>
+            {% endfor %}
             {% if author.links %}
                 {% for link in author.links %}
                     {% if link.label and link.url %}
