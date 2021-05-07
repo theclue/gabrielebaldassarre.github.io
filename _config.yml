@@ -202,6 +202,7 @@ compress_html:
 head_scripts:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://code.jquery.com/jquery-3.6.0.min.js
 
 after_footer_scripts:
   - //s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d790b1b248d9eaf
