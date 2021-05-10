@@ -1,6 +1,8 @@
 ---
-category: Approfondimenti
+category: Fisica
 title: Il teorema dell'energia cinetica
+redirect_from:
+  - /teorema-energia-cinetica/
 excerpt: "La meccanica quantistica non è strana al punto da mettere _del tutto_ in discussione il principio di conservazione dell'energia. Ma cosa possiamo dire, esattamente, su questo principio?"
 header:
   overlay_image: /assets/images/jordan-discourse-overlay.jpg

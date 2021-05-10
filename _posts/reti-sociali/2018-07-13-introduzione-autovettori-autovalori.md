@@ -1,6 +1,7 @@
 ---
 title: "Approfondimento matematico: autovettori e autovalori"
-permalink: /introduzione-autovettori-autovalori/
+redirect_from:
+  - /introduzione-autovalori-autovettori/
 excerpt: "In questo articolo introdurremo l'argomento degli autovalori e autovettori, uno dei concetti base della geometria e dell'algebra lineare che trova applicazioni pratiche in moltissimi campi compresa, naturalmente, la Social Network Analysis."
 category: "Reti Sociali"
 header:
@@ -8,8 +9,6 @@ header:
   teaser: /assets/images/eigenvectors-teaser.jpg
   overlay_filter: 0.5
 ---
-
-
 
 Lo studio degli autovettori e dei corrispondenti autovalori è un qualcosa in cui ci siamo cimentati probabilmente tutti almeno una volta nella vita. In pochi, tuttavia, sanno che questo strumento è di importanza vitale sia per la Social Network Analysis che per la Fisica Quantistica. Nel primo caso, per via di tutto ciò che concerne la centralità.
 

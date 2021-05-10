@@ -1,6 +1,7 @@
 ---
 title: "Approfondimento matematico: autovettori e autovalori"
-permalink: /introduzione-autovettori-autovalori/
+redirect_from:
+  - /introduzione-autovalori-autovettori/
 excerpt: "In questo articolo introdurremo l'argomento degli autovalori e autovettori, uno dei concetti base della geometria e dell'algebra lineare che trova applicazioni pratiche in moltissimi campi compresa, naturalmente, la Social Network Analysis."
 category: "Reti Sociali"
 header:

@@ -7,6 +7,7 @@ group :jekyll_plugins do
   gem 'jekyll-optional-front-matter'
   gem 'jekyll-relative-links'
   gem 'jekyll-include-cache'
+  gem 'jekyll-redirect-from'
   gem 'kramdown'
   gem 'liquid'
   gem 'listen'
